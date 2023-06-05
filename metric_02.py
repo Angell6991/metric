@@ -66,7 +66,7 @@ def riemann(p,i,j,k):
     for u in range(n):
         DD[u]   =   [0]*n    
 
-    DDD = [0]*n 
+    DDD = list(range(n)) 
     for u in range(n):
         DDD[u]   =   [0]*n 
 
@@ -113,6 +113,88 @@ def Rcurva():
 ##############################################################
 #---------------Visualizacion_de_resultados------------------#
 ##############################################################
+
+
+#-----------Simbolos_de_Christofell_Clase_1------------------#
+
+print("Simbolos de Christofell Clase 1")
+
+Visual_christofell_1    =   []   
+for k in range(n):
+    for j in range(n):
+        for i in range(n):
+             Visual_christofell_1.append(christofell(k,j,i))
+
+Visual_christofell_1    =   Array(Visual_christofell_1, (n,n,n))
+
+print("Complete \n")
+
+#-----------Simbolos_de_Christofell_Clase_2------------------#
+
+print("Simbolos de Christofell Clase 2")
+
+Visual_christofell_2    =   []   
+for k in range(n):
+    for j in range(n):
+        for i in range(n):
+             Visual_christofell_2.append(conexion(k,j,i))
+
+Visual_christofell_2    =   Array(Visual_christofell_2, (n,n,n))
+
+print("Complete \n")
+
+#-----------Tensor_de_Riemann_4-Covariante------------------#
+
+print("Tensor de Riemann 4-Covariante")
+
+Visual_Riemann    =   []
+for p in range(n):
+    for k in range(n):
+        for j in range(n):
+            for i in range(n):
+                 Visual_Riemann.append(riemann(p,k,j,i))
+
+Visual_Riemann    =   Array(Visual_Riemann, (n,n,n,n))
+
+print("Complete \n")
+
+#------Tensor_de_Riemann_3-Covariante_1-Contravariante------#
+
+print("Tensor de Riemann 3-Covariante y 1-Contravariante")
+
+Visual_TRiemann    =   []
+for p in range(n):
+    for k in range(n):
+        for j in range(n):
+            for i in range(n):
+                 Visual_TRiemann.append(TRiemann(p,k,j,i))
+
+Visual_TRiemann    =   Array(Visual_TRiemann, (n,n,n,n))
+
+print("Complete \n")
+
+#--------------------Tensor_de_Ricci------------------------#
+
+print("Tensor de Ricci")
+
+Visual_Ricci    =   []
+for i in range(n):
+    for j in range(n):
+        Visual_Ricci.append(ricci(i,j))
+
+Visual_Ricci    =   Array(Visual_Ricci, (n,n))
+
+print("Complete \n")
+
+#------------------Escalar_de_Curvatura---------------------#
+
+print("Escalar de Curvatura")
+
+Visual_Rcurva    =    Rcurva()   
+
+print("Complete \n")
+
+#-----------------------------------------------------------#
 
 
 
