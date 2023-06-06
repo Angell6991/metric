@@ -20,6 +20,20 @@ import os
 os.system("clear")
 
 ##############################################################
+#--------------------Guia_de_funciones-----------------------#
+#                                                            #
+#   Tensor metrico                      G[i,j]               #
+#   T metrico inverso                   Ginv[i,j]            #
+#   Simb Christofell clase 1            Christofell[k,j,i]   #
+#   Simb Christofell Clase 2            Conexion[k,j,i]      #
+#   T Riemann 4-Cova                    riemann[p,k,j,i]     #
+#   T Riemann 3-Cova y 1-Contrava       Riemann[p,k,j,i]     #
+#   T Ricci                             Ricci[i,j]           #
+#   Escalar de Curvatura                EscalarC             #
+#                                                            #
+##############################################################
+
+##############################################################
 ##-----------------Parametros_de_entrada--------------------##
 ##############################################################
 
@@ -43,7 +57,13 @@ Ginv    =    simplify(factor(Array(Matrix(g).inv())))
 ##############################################################
 
 def christofell(k,j,i):
-    ch  =   simplify(factor( ( diff(G[j,k],var[i]) + diff(G[i,k],var[j]) - diff(G[i,j],var[k]) )/2 ))
+    ch  =   (
+             diff(G[j,k],var[i]) + 
+             diff(G[i,k],var[j]) - 
+             diff(G[i,j],var[k]) 
+             )/2 
+    
+    ch  =   simplify(factor(ch))
     return ch
 
 #------------------------Visual------------------------------#
@@ -98,7 +118,11 @@ print("Tensor de Riemann 4-Covariante")
 def DD(p,i,j,k):
     D   =   0 
     for s in range(n):
-        D   =   D + Conexion[s,k,p]*Christofell[s,i,j] - Conexion[s,j,p]*Christofell[s,i,k]
+        D   =   (
+                D + Conexion[s,k,p]*Christofell[s,i,j] 
+                  - Conexion[s,j,p]*Christofell[s,i,k]
+                )
+        
         D   =   simplify(factor(D))
     return D
 
@@ -108,11 +132,15 @@ for p in range(n):
     for i in range(n):
         for j in range(n):
             for k in range(n):
-               riemann.append(
-                       simplify(
-                           factor(
-                               diff(Christofell[p,i,k], var[j]) - diff(Christofell[p,i,j], var[k]) + DD(p,i,j,k))))
+                SS  =   (
+                        diff(Christofell[p,i,k], var[j]) - 
+                        diff(Christofell[p,i,j], var[k]) + 
+                        DD(p,i,j,k)
+                        )
 
+                SS  =   simplify(factor(SS))
+                riemann.append(SS)
+              
 riemann     =   Array(riemann, (n,n,n,n))
 
 print("Complete \n")
@@ -186,7 +214,6 @@ print("Complete \n")
 ##############################################################
 #---------------Visualizacion_de_resultados------------------#
 ##############################################################
-
 
 
 
