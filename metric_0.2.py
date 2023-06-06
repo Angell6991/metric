@@ -20,7 +20,7 @@ import os
 os.system("clear")
 
 ##############################################################
-#------------------Parametros_de_entrada---------------------#
+##-----------------Parametros_de_entrada--------------------##
 ##############################################################
 
 
@@ -39,162 +39,154 @@ Ginv    =    simplify(factor(Array(Matrix(g).inv())))
 
 
 ##############################################################
-#----------------Definicion_de_funciones---------------------#
+##----------Simbolos_de_Christofell_Clase_1-----------------##
 ##############################################################
 
-
-#-----------Simbolos_de_Christofell_Clase_1------------------#
-
-def christofell(i,j,k):
+def christofell(k,j,i):
     ch  =   simplify(factor( ( diff(G[j,k],var[i]) + diff(G[i,k],var[j]) - diff(G[i,j],var[k]) )/2 ))
     return ch
 
-#-----------Simbolos_de_Christofell_Clase_2------------------#
+#------------------------Visual------------------------------#
 
-def conexion(k,j,i):
+print("Simbolos de Christofell Clase 1")
+
+Christofell  =   []
+
+for k in range(n):
+    for j in range(n):
+        for i in range(n):
+            Christofell.append(christofell(k,j,i)) 
+
+Christofell  =   Array(Christofell, (n,n,n))
+
+print("Complete \n")
+
+
+##############################################################
+##-----------Simbolos_de_Christofell_Clase_2----------------##
+##############################################################
+
+def conexion(i,j,k):
     cx   =   0
     for s in range(n):
-        D    =   Ginv[k,s]*christofell(i,j,s) 
+        D    =   Ginv[k,s]*Christofell[s,j,i] 
         cx   =   simplify(factor(cx + D)) 
     return cx
 
-#-----------Tensor_de_Riemann_4-Covariante------------------#
+#------------------------Visual------------------------------#
 
-def riemann(p,i,j,k):
+print("Simbolos de Christofell Clase 2")
 
-    DD = [0]*n 
-    for u in range(n):
-        DD[u]   =   [0]*n    
+Conexion  =   []
 
-    DDD = list(range(n)) 
-    for u in range(n):
-        DDD[u]   =   [0]*n 
+for k in range(n):
+    for j in range(n):
+        for i in range(n):
+            Conexion.append(conexion(i,j,k)) 
 
-    for u1 in range(n):
-        for u2 in range(n):
-            DD[u1][u2] = DDD
+Conexion  =   Array(Conexion, (n,n,n))
 
+print("Complete \n")
+
+
+#############################################################
+##----------Tensor_de_Riemann_4-Covariante-----------------##
+#############################################################
+
+print("Tensor de Riemann 4-Covariante")
+
+def DD(p,i,j,k):
+    D   =   0 
     for s in range(n):
-        DD[p][i][j][k]  =   factor(DD[p][i][j][k] + conexion(s,k,p)*christofell(i,j,s) - conexion(s,j,p)*christofell(i,k,s))
+        D   =   D + Conexion[s,k,p]*Christofell[s,i,j] - Conexion[s,j,p]*Christofell[s,i,k]
+        D   =   simplify(factor(D))
+    return D
 
-    riem    =   factor(diff(christofell(i,k,p), var[j]) - diff(christofell(i,j,p), var[k]) + DD[p][i][j][k])
-    riem    =   simplify(riem)
-    return riem
+riemann     =   []
 
-#------Tensor_de_Riemann_3-Covariante_1-Contravariante------#
-
-def TRiemann(p,i,j,k):
-    TR      =   0
-    for s in range(n):
-        TR  =   TR + Ginv[p,s]*riemann(s,i,j,k)
-        TR  =   simplify(factor(TR))
-    return TR
-
-#--------------------Tensor_de_Ricci------------------------#
-
-def ricci(i,j):
-    ric    =   0
-    for s in range(n):
-        ric    =   ric + TRiemann(s,i,s,j)
-        ric    =   simplify(factor(ric))
-    return ric
-
-#------------------Escalar_de_Curvatura---------------------#
-
-def Rcurva():
-    curv    =   0
+for p in range(n):
     for i in range(n):
         for j in range(n):
-            curv    =   curv + Ginv[i,j]*ricci(i,j)
-            curv    =   simplify(factor(curv))
-    return curv
+            for k in range(n):
+               riemann.append(
+                       simplify(
+                           factor(
+                               diff(Christofell[p,i,k], var[j]) - diff(Christofell[p,i,j], var[k]) + DD(p,i,j,k))))
+
+riemann     =   Array(riemann, (n,n,n,n))
+
+print("Complete \n")
+
+
+#############################################################
+##-----Tensor_de_Riemann_3-Covariante_1-Contravariante-----##
+#############################################################
+
+print("Tensor de Riemann 3-Covariante y 1-Contravariante")
+
+def TRiemann(p,i,j,k):
+    TT  =   0
+    for s in range(n):
+        TT  =   TT + Ginv[p,s]*riemann[s,i,j,k]
+        TT  =   simplify(factor(TT))
+    return TT
+
+Riemann     =   []
+
+for p in range(n):
+    for i in range(n):
+        for j in range(n):
+            for k in range(n):
+                Riemann.append(TRiemann(p,i,j,k))
+
+Riemann     =   Array(Riemann, (n,n,n,n))
+
+print("Complete \n")
+
+
+#############################################################
+##-------------------Tensor_de_Ricci-----------------------##
+#############################################################
+
+print("Tensor de Ricci")
+
+def ricci(i,j):
+    ri  =   0
+    for s in range(n):
+        ri  =   ri + Riemann[s,i,s,j]
+        ri  =   simplify(factor(ri))
+    return ri
+
+Ricci   =   []
+
+for i in range(n):
+    for j in range(n):
+        Ricci.append(ricci(i,j))
+
+Ricci   =   Array(Ricci, (n,n))
+
+print("Complete \n")
+
+
+#############################################################
+##-----------------Escalar_de_Curvatura--------------------##
+#############################################################
+
+print("Escalar de Curvatura")
+
+EscalarC = 0
+for i in range(n):
+    for j in range(n):
+        EscalarC    =   EscalarC + Ginv[i,j]*Ricci[i,j]
+        EscalarC    =   simplify(factor(EscalarC)) 
+
+print("Complete \n")
 
 
 ##############################################################
 #---------------Visualizacion_de_resultados------------------#
 ##############################################################
 
-
-#-----------Simbolos_de_Christofell_Clase_1------------------#
-
-print("Simbolos de Christofell Clase 1")
-
-Visual_christofell_1    =   []   
-for k in range(n):
-    for j in range(n):
-        for i in range(n):
-             Visual_christofell_1.append(christofell(k,j,i))
-
-Visual_christofell_1    =   Array(Visual_christofell_1, (n,n,n))
-
-print("Complete \n")
-
-#-----------Simbolos_de_Christofell_Clase_2------------------#
-
-print("Simbolos de Christofell Clase 2")
-
-Visual_christofell_2    =   []   
-for k in range(n):
-    for j in range(n):
-        for i in range(n):
-             Visual_christofell_2.append(conexion(k,j,i))
-
-Visual_christofell_2    =   Array(Visual_christofell_2, (n,n,n))
-
-print("Complete \n")
-
-#-----------Tensor_de_Riemann_4-Covariante------------------#
-
-print("Tensor de Riemann 4-Covariante")
-
-Visual_Riemann    =   []
-for p in range(n):
-    for k in range(n):
-        for j in range(n):
-            for i in range(n):
-                 Visual_Riemann.append(riemann(p,k,j,i))
-
-Visual_Riemann    =   Array(Visual_Riemann, (n,n,n,n))
-
-print("Complete \n")
-
-#------Tensor_de_Riemann_3-Covariante_1-Contravariante------#
-
-print("Tensor de Riemann 3-Covariante y 1-Contravariante")
-
-Visual_TRiemann    =   []
-for p in range(n):
-    for k in range(n):
-        for j in range(n):
-            for i in range(n):
-                 Visual_TRiemann.append(TRiemann(p,k,j,i))
-
-Visual_TRiemann    =   Array(Visual_TRiemann, (n,n,n,n))
-
-print("Complete \n")
-
-#--------------------Tensor_de_Ricci------------------------#
-
-print("Tensor de Ricci")
-
-Visual_Ricci    =   []
-for i in range(n):
-    for j in range(n):
-        Visual_Ricci.append(ricci(i,j))
-
-Visual_Ricci    =   Array(Visual_Ricci, (n,n))
-
-print("Complete \n")
-
-#------------------Escalar_de_Curvatura---------------------#
-
-print("Escalar de Curvatura")
-
-Visual_Rcurva    =    Rcurva()   
-
-print("Complete \n")
-
-#-----------------------------------------------------------#
 
 
 
