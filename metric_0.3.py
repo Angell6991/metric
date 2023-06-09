@@ -40,14 +40,14 @@ os.system("clear")
 
 #------------------Variables_simbolicas----------------------#
 
-var     =    ["psi", "theta", "phi"]
+var     =    ["psi", "theta", "phi"]                                                                            #insert variables
 r       =    symbols("r")
 var     =    symbols(var)
 n       =    len(var)
 
 #---------------Tensor_Metrico_y_inverso---------------------#
 
-g       =    [[(r**2),0,0],[0,(r**2)*(sin(var[0])**2),0],[0,0,(r**2)*(sin(var[0])**2)*(sin(var[1])**2)]]
+g       =    [[(r**2),0,0],[0,(r**2)*(sin(var[0])**2),0],[0,0,(r**2)*(sin(var[0])**2)*(sin(var[1])**2)]]        #inset T metric
 G       =    Array(g)
 Ginv    =    simplify(factor(Array(Matrix(g).inv())))
 
@@ -212,7 +212,7 @@ print("Complete \n")
 
 
 ##############################################################
-#---------------Visualizacion_de_resultados------------------#
+##--------------Visualizacion_de_resultados-----------------##
 ##############################################################
 
 
