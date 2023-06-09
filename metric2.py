@@ -13,44 +13,10 @@
 ###                                                        ###
 ##############################################################
  ############################################################
+ ##------------------metric_part_2-------------------------##
+ ############################################################
 
-from sympy import*
-import os
-
-os.system("clear")
-
-##############################################################
-#--------------------Guia_de_funciones-----------------------#
-#                                                            #
-#   Tensor metrico                      metric(i,j)          #
-#   T metrico inverso                   metric_inv(i,j)      #
-#   Simb Christofell clase 1            Christofell(k,j,i)   #
-#   Simb Christofell Clase 2            Conexion(k,j,i)      #
-#   T Riemann 4-Cova                    riemann(p,k,j,i)     #
-#   T Riemann 3-Cova y 1-Contrava       Riemann(p,k,j,i)     #
-#   T Ricci                             Ricci(i,j)           #
-#   Escalar de Curvatura                EscalarC             #
-#                                                            #
-##############################################################
-
-##############################################################
-##-----------------Parametros_de_entrada--------------------##
-##############################################################
-
-
-#------------------Variables_simbolicas----------------------#
-
-var     =    ["psi", "theta", "phi"]                                                                            #insert variables
-r       =    symbols("r")
-var     =    symbols(var)
-n       =    len(var)
-
-#---------------Tensor_Metrico_y_inverso---------------------#
-
-g       =    [[(r**2),0,0],[0,(r**2)*(sin(var[0])**2),0],[0,0,(r**2)*(sin(var[0])**2)*(sin(var[1])**2)]]        #insert T_metrico
-G       =    Array(g)
-Ginv    =    simplify(factor(Array(Matrix(g).inv())))
-
+from metric1 import*
 
 ##############################################################
 ##----------Simbolos_de_Christofell_Clase_1-----------------##
@@ -210,102 +176,5 @@ for i in range(n):
 
 print("Complete \n")
 
-
-##############################################################
-##--------------Visualizacion_de_resultados-----------------##
-##############################################################
-
-
-#----------------Definicion_por_componentes------------------#
-
-def metric(i,j):
-    return G[i,j] 
-
-def metric_inv(i,j):
-    return Ginv[i,j]
-
-def Christofell(k,j,i):
-    return VChristofell[k,j,i]
-
-def Conexion(k,j,i):
-    return VConexion[k,j,i]
-
-def riemann(p,k,j,i): 
-    return Vriemann[p,k,j,i]
-
-def Riemann(p,k,j,i):
-    return VRiemann[p,k,j,i]
-
-def Ricci(i,j):
-    return VRicci[i,j]
-
-def EscalarC():
-    return VEscalarC
-
-#------------------Definicion_por_Matrices-------------------#
-
-def metric_Mt():
-    return G 
-
-def metric_inv_Mt():
-    return Ginv
-
-def Christofell_Mt(k):
-    return VChristofell[k]
-
-def Conexion_Mt(k):
-    return VConexion[k]
-
-def riemann_Mt(j,i): 
-    return Vriemann[j,i]
-
-def Riemann_Mt(j,i):
-    return VRiemann[j,i]
-
-def Ricci_Mt():
-    return VRicci
-
-#------------------------------------------------------------#
-
-"""
-os.system("clear")
-
-print("Tensor Metrico y inverso")
-print(metric_Mt())
-print()
-print(metric_inv_Mt())
-print()
-
-print("Simbolos de Christofell Clase 1")
-for i in range(n):
-    print(Christofell_Mt(i))
-    print()
-
-print("Simbolos de Christofell Clase 2")
-for i in range(n):
-    print(Conexion_Mt(i))
-    print()
-
-print("Tensor de Riemann 4-Covariante")
-for i in range(n):
-    for j in range(n):
-        print(riemann_Mt(i,j))
-        print()
-
-print("Tensor de Riemann 3-Covariante 1-Contravariante")
-for i in range(n):
-    for j in range(n):
-        print(Riemann_Mt(i,j))
-        print()
-
-print("Tensor de Ricci")
-print(Ricci_Mt())
-print()
-
-print("Escalar de Curvatura")
-print(EscalarC())
-"""
-
-#------------------------------------------------------------#
 
 
