@@ -15,6 +15,8 @@
  ############################################################
 
 from sympy import*
+from pylatex import Document, Section, Subsection, Command, Math
+from pylatex.utils import italic, NoEscape
 import os
 
 os.system("clear")
@@ -265,47 +267,82 @@ def Riemann_Mt(j,i):
 def Ricci_Mt():
     return VRicci
 
-#------------------------------------------------------------#
 
-"""
-os.system("clear")
+##############################################################
+##--------------Construcion_del_document_pdf----------------##
+##############################################################
 
-print("Tensor Metrico y inverso")
-print(metric_Mt())
-print()
-print(metric_inv_Mt())
-print()
+doc     =   Document()
 
-print("Simbolos de Christofell Clase 1")
+#------------Reescritura_de_funciones_a_latex----------------#
+
+print("Pasando a latex")
+
+latex_metric        =   latex(metric_Mt()) 
+latex_metric_int    =   latex(metric_inv_Mt())
+
+latex_chritofell    =   []
 for i in range(n):
-    print(Christofell_Mt(i))
-    print()
+    latex_chritofell.append(latex(Christofell_Mt(i)))
 
-print("Simbolos de Christofell Clase 2")
+latex_conexion      =   []
 for i in range(n):
-    print(Conexion_Mt(i))
-    print()
+    latex_conexion.append(latex(Conexion_Mt(i)))
 
-print("Tensor de Riemann 4-Covariante")
-for i in range(n):
-    for j in range(n):
-        print(riemann_Mt(i,j))
-        print()
-
-print("Tensor de Riemann 3-Covariante 1-Contravariante")
+latex_rimann        =   []
 for i in range(n):
     for j in range(n):
-        print(Riemann_Mt(i,j))
-        print()
+        latex_rimann.append(latex(riemann_Mt(i,j)))
 
-print("Tensor de Ricci")
-print(Ricci_Mt())
-print()
+latex_Rimann        =   []
+for i in range(n):
+    for j in range(n):
+        latex_Rimann.append(latex(Riemann_Mt(i,j)))
 
-print("Escalar de Curvatura")
-print(EscalarC())
-"""
+latex_Ricci         =   latex(Ricci_Mt())
+
+Latex_Escalar       =   latex(EscalarC())
+
+print("Complete \n")
+
+#-------------Insertando_texto_en_el_documento---------------#
+
+print("Construcion del documento pdf")
+
+with doc.create(Section("Tensor Metrico y inverso")):
+    doc.append(Math(data=[NoEscape("g_{ij} = " + latex_metric)]))
+    doc.append(Math(data=[NoEscape("g^{ij} = " + latex_metric_int)]))
+
+with doc.create(Section("Simbolos de Christofell Clase 1")):
+    for i in range(n):
+        doc.append(Math(data=[NoEscape(latex_chritofell[i])]))
+
+with doc.create(Section("Simbolos de Christofell Clase 2")):
+    for i in range(n):
+        doc.append(Math(data=[NoEscape(latex_conexion[i])]))
+
+with doc.create(Section("Tensor de Riemann 4-Covariante")):
+    for i in range(n*n):
+        doc.append(Math(data=[NoEscape(latex_rimann[i])]))
+
+with doc.create(Section("Tensor de Riemann 3-Covariante 1-Contravariante")):
+    for i in range(n*n):
+        doc.append(Math(data=[NoEscape(latex_Rimann[i])]))
+
+with doc.create(Section("Tensor de Ricci")):
+    doc.append(Math(data=[NoEscape(latex_Ricci)]))
+
+with doc.create(Section("Escalar de Curvatura")):
+    doc.append(Math(data=[NoEscape(Latex_Escalar)]))
+
+print("Complete \n")
+
+#--------------------Generando_pdf---------------------------#
+
+doc.generate_pdf("Metric_doc", clean_tex=True)                  #True: borra todos los archivos de latex una vez cerado el pdf
+os.system("zathura Metric_doc.pdf &")
 
 #------------------------------------------------------------#
+
 
 
