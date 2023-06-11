@@ -23,6 +23,20 @@ from metric2 import*
 ##############################################################
 
 
+#-----------Arreglos_para_los_nombres_en_el_pdf--------------#
+
+def chri(i):
+    return "\{" + "ij," + str(i) + "\}"
+
+def conex(i):
+    return "\\Gamma_{ \: \: ij}" + "^" + str(i)
+
+def rie(i,j):
+    return "R_{" + str(i+1) + str(j+1) + "ij}" 
+
+def Rie(i,j):
+    return "R^{" + str(i+1) + "}" + "_{ \: \: " + str(j+1) + "ij}" 
+
 #----------------Definicion_por_componentes------------------#
 
 # def metric(i,j):
@@ -95,30 +109,34 @@ doc.preamble.append(NoEscape(r"\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm
 
 print("Pasando a latex")
 
-latex_metric        =   latex(metric_Mt()) 
-latex_metric_int    =   latex(metric_inv_Mt())
+latex_metric        =   latex(metric_Mt()).replace("\left[","\left( \;").replace("\\right]","\; \\right)") 
+latex_metric_int    =   latex(metric_inv_Mt()).replace("\left[","\left( \;").replace("\\right]","\; \\right)")
 
 latex_chritofell    =   []
 for i in range(n):
-    latex_chritofell.append(latex(Christofell_Mt(i)))
+    latex_chritofell.append(latex(Christofell_Mt(i)).replace("\left[","\left( \;").replace("\\right]","\; \\right)"))
 
 latex_conexion      =   []
 for i in range(n):
-    latex_conexion.append(latex(Conexion_Mt(i)))
+    latex_conexion.append(latex(Conexion_Mt(i)).replace("\left[","\left( \;").replace("\\right]","\; \\right)"))
 
 latex_rimann        =   []
+lista_rie           =   []
 for i in range(n):
     for j in range(n):
-        latex_rimann.append(latex(riemann_Mt(i,j)))
+        latex_rimann.append(latex(riemann_Mt(i,j)).replace("\left[","\left( \;").replace("\\right]","\; \\right)"))
+        lista_rie.append(rie(i,j))
 
 latex_Rimann        =   []
+lista_Rie           =   []
 for i in range(n):
     for j in range(n):
-        latex_Rimann.append(latex(Riemann_Mt(i,j)))
+        latex_Rimann.append(latex(Riemann_Mt(i,j)).replace("\left[","\left( \;").replace("\\right]","\; \\right)"))
+        lista_Rie.append(Rie(i,j))
 
-latex_Ricci         =   latex(Ricci_Mt())
+latex_Ricci         =   latex(Ricci_Mt()).replace("\left[","\left( \;").replace("\\right]","\; \\right)")
 
-Latex_Escalar       =   latex(EscalarC())
+Latex_Escalar       =   latex(EscalarC()).replace("\left[","\left( \;").replace("\\right]","\; \\right)")
 
 print("Complete \n")
 
@@ -134,30 +152,30 @@ with doc.create(Section("Tensor Metrico y inverso")):
 
 with doc.create(Section("Simbolos de Christofell Clase 1")):
     for i in range(n):
-        doc.append(Math(data=[NoEscape(latex_chritofell[i])]))
+        doc.append(Math(data=[NoEscape(chri(i+1) + "=" + latex_chritofell[i])]))
         doc.append("\n")
  
 with doc.create(Section("Simbolos de Christofell Clase 2")):
     for i in range(n):
-        doc.append(Math(data=[NoEscape(latex_conexion[i])]))
+        doc.append(Math(data=[NoEscape(conex(i+1) + "=" + latex_conexion[i])]))
         doc.append("\n")
  
 with doc.create(Section("Tensor de Riemann 4-Covariante")):
     for i in range(n*n):
-        doc.append(Math(data=[NoEscape(latex_rimann[i])]))
+        doc.append(Math(data=[NoEscape(lista_rie[i] + "=" + latex_rimann[i])]))
         doc.append("\n")
  
 with doc.create(Section("Tensor de Riemann 3-Covariante 1-Contravariante")):
     for i in range(n*n):
-        doc.append(Math(data=[NoEscape(latex_Rimann[i])]))
+        doc.append(Math(data=[NoEscape(lista_Rie[i]  + "=" + latex_Rimann[i])]))
         doc.append("\n")
 
 with doc.create(Section("Tensor de Ricci")):
-    doc.append(Math(data=[NoEscape(latex_Ricci)]))
+    doc.append(Math(data=[NoEscape("R_{ij} = " + latex_Ricci)]))
     doc.append("\n")
 
 with doc.create(Section("Escalar de Curvatura")):
-    doc.append(Math(data=[NoEscape(Latex_Escalar)]))
+    doc.append(Math(data=[NoEscape("R = " + Latex_Escalar)]))
     doc.append("\n")
 
 
