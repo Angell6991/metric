@@ -176,6 +176,35 @@ for i in range(n):
 
 print("Complete \n")
 
+
+##############################################################
+##--------Definicion_de_funciones_en_forma_matricial--------##
+##############################################################
+
+def metric_Mt():
+    return G 
+
+def metric_inv_Mt():
+    return Ginv
+
+def Christofell_Mt(k):
+    return VChristofell[k]
+
+def Conexion_Mt(k):
+    return VConexion[k]
+
+def riemann_Mt(j,i): 
+    return Vriemann[j,i]
+
+def Riemann_Mt(j,i):
+    return VRiemann[j,i]
+
+def Ricci_Mt():
+    return VRicci
+
+def EscalarC():
+    return VEscalarC
+
 #------------------------------------------------------------#
 
 

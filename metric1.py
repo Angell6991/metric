@@ -26,21 +26,20 @@ os.system("clear")
 ##############################################################
 #--------------------Guia_de_funciones-----------------------#
 #                                                            #
-#   Tensor metrico                      metric(i,j)          #
-#   T metrico inverso                   metric_inv(i,j)      #
-#   Simb Christofell clase 1            Christofell(k,j,i)   #
-#   Simb Christofell Clase 2            Conexion(k,j,i)      #
-#   T Riemann 4-Cova                    riemann(p,k,j,i)     #
-#   T Riemann 3-Cova y 1-Contrava       Riemann(p,k,j,i)     #
-#   T Ricci                             Ricci(i,j)           #
-#   Escalar de Curvatura                EscalarC             #
+#   Tensor metrico                      metric_Mt()          #
+#   T metrico inverso                   metric_inv_Mt()      #
+#   Simb Christofell clase 1            Christofell_Mt(k)    #
+#   Simb Christofell Clase 2            Conexion_Mt(k)       #
+#   T Riemann 4-Cova                    riemann_Mt(i,j)      #
+#   T Riemann 3-Cova y 1-Contrava       Riemann_Mt(i,j)      #
+#   T Ricci                             Ricci_Mt()           #
+#   Escalar de Curvatura                EscalarC()           #
 #                                                            #
 ##############################################################
 
 ##############################################################
 ##-----------------Parametros_de_entrada--------------------##
 ##############################################################
-
 
 #------------------Variables_simbolicas----------------------#
 
