@@ -43,6 +43,12 @@ pip install pyinstaller
 
 compilar python:
 pyinstaller nombre_archivo.py
+pyinstaller --onefile nombre_archivo.py
+
+para montar el ejecutable en el sistema hay que moverlo á alguna rutas
+mostradas con el comando:
+
+echo $PATH
 
 #------------------------------IGNORE---------------------------------#
 
