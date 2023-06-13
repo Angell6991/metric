@@ -29,7 +29,7 @@ def christofell(k,j,i):
              diff(G[i,j],var[k]) 
              )/2 
     
-    ch  =   simplify(factor(ch))
+    #ch  =   simplify(factor(ch))
     return ch
 
 #------------------------Visual------------------------------#
@@ -56,7 +56,8 @@ def conexion(i,j,k):
     cx   =   0
     for s in range(n):
         D    =   Ginv[k,s]*VChristofell[s,j,i] 
-        cx   =   simplify(factor(cx + D)) 
+        cx   =   cx + D
+        #cx   =   simplify(factor(cx + D)) 
     return cx
 
 #------------------------Visual------------------------------#
