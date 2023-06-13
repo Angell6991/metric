@@ -173,6 +173,7 @@ with doc.create(Section("Escalar de Curvatura")):
 
 #--------------------Generando_pdf---------------------------#
 
+# os.remove("Metric_doc.pdf")
 doc.generate_pdf("Metric_doc", clean_tex=True)                  #True: borra todos los archivos de latex una vez cerado el pdf
 os.system("zathura Metric_doc.pdf &")
 
