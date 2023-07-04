@@ -17,6 +17,7 @@
 ##------------------------INSTRUCTIONS-------------------------------##
 #######################################################################
 
+
 Para la inplementacion del programa se requieren las tres partes 
 metric1.py, metric2.py y metric3.py  
 
@@ -26,6 +27,8 @@ ejecutar metric3.py
 librerias python:
 sympy
 pylatex
+customtkinter
+Pillow
 
 Adicionalmente se requiere tener instalado LateX y zathura los cuales 
 se pueden instalar en arch linux con:
