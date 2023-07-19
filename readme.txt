@@ -19,7 +19,7 @@
 
 
 Para la inplementacion del programa se requieren las tres partes 
-metric1.py, metric2.py y metric3.py  
+metric.py, metric_graph.py y metric3.py  
 
 Y para su ejecuacion mediante el interprete de python se debe de 
 ejecutar metric3.py
