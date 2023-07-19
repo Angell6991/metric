@@ -13,8 +13,6 @@
 ###                                                        ###
 ##############################################################
  ############################################################
- ##------------------metric_part_3-------------------------##
- ############################################################
 
 from metric2 import*
 
@@ -116,7 +114,6 @@ doc.preamble.append(NoEscape(r"\usepackage{txfonts}"))
 doc.preamble.append(NoEscape(r"\usepackage{mathrsfs}"))
 doc.preamble.append(NoEscape(r"\usepackage{color}"))
 doc.preamble.append(NoEscape(r"\usepackage{parskip}"))
-doc.preamble.append(NoEscape(r"\usepackage[spanish]{babel}"))
 doc.preamble.append(NoEscape(r"\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}"))
 
 #-------------Insertando_texto_en_el_documento---------------#
@@ -181,6 +178,4 @@ os.system("zathura ~/Documentos/Metric_doc.pdf &")              #os.system("zath
 print("Complete \n")
 
 #------------------------------------------------------------#
-
-
 
