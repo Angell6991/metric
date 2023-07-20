@@ -75,10 +75,13 @@ class metric:
         #--------------------Tensor_metrico--------------------------#
 
         self.A   =  []
+        self.itera  =   0
+
         for i in range(self.n):
             for j in range(self.n):
                 if i <= j:
-                    self.A.append(self.lista3[i+j][0])
+                    self.A.append(self.lista3[self.itera][0])
+                    self.itera   =   self.itera + 1
                 elif i > j:
                     self.A.append(0)
 
@@ -93,11 +96,11 @@ class metric:
                     self.B.append(0)
         self.B   =   sy.Array(self.B, (self.n,self.n))
 
-        self.g   =   self.A + self.B
-        self.G       =    sy.Array(self.g)
+        self.g   =    self.A + self.B
+        self.G   =    sy.Array(self.g)
 
     
-        #--------------Tensor_metrico _inverso-----------------------#
+        #---------------Tensor_metrico_inverso-----------------------#
         self.Ginv  =    sy.simplify(sy.factor(sy.Matrix(self.G).inv()))
         self.Ginv  =    sy.Array(self.Ginv)
 
@@ -266,6 +269,7 @@ class metric:
 
 #--------------------instanciando_objeto---------------------#
 
+"""
 os.system("clear")
 
 inst  =   metric("variables.dat","no_variables.dat","tensor_metrico.dat")
@@ -294,3 +298,4 @@ print(inst.Ricci_Mt(), "\n")
 print("Escalar de curvatura")
 print(inst.EscalarC())
 
+"""
