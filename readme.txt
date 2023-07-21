@@ -26,16 +26,18 @@ ejecutar metric3.py
 
 librerias python:
 sympy
+pandas
 pylatex
 customtkinter
 Pillow
 
-Adicionalmente se requiere tener instalado LateX y zathura los cuales 
+Adicionalmente se requiere tener instalado nvim, LateX y zathura los cuales 
 se pueden instalar en arch linux con:
 
 sudo pacman -S zathura
 sudo pacman -S texlive-most
-
+sudo pacman -S texlive-core
+sudo pacman -S nvim 
 
 #######################################################################
 ##--------------------------COMPILATOR-------------------------------##
