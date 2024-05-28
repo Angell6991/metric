@@ -18,8 +18,8 @@
 #######################################################################
 
 
-Para la inplementacion del programa se requieren las tres partes 
-metric.py, metric_graph.py y metric3.py  
+Para la inplementacion del programa se requieren las dos partes 
+metric.py y metric3.py  
 
 Y para su ejecuacion mediante el interprete de python se debe de 
 ejecutar metric3.py
@@ -28,8 +28,6 @@ librerias python:
 sympy
 pandas
 pylatex
-customtkinter
-Pillow
 
 Adicionalmente se requiere tener instalado nvim, LateX y zathura los cuales 
 se pueden instalar en arch linux con:
