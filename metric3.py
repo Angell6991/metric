@@ -15,6 +15,7 @@
  ############################################################
 
 import metric as mtc 
+import metric2 as mtc2
 import pylatex as tex
 import sympy as sy
 import os 
@@ -25,9 +26,9 @@ os.system("clear")
 ##-----------------Parametros_de_entrada--------------------##
 ##############################################################
 
-os.system("nvim variables.dat")
-os.system("nvim no_variables.dat")
-os.system("nvim tensor_metrico.dat")
+mtc2.abrir_bloc_de_notas("variables.dat")
+mtc2.abrir_bloc_de_notas("no_variables.dat")
+mtc2.abrir_bloc_de_notas("tensor_metrico.dat")
 
 print("Calculando")
 
