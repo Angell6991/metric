@@ -19,18 +19,18 @@ import pandas as pd
 import os
 
 ##############################################################
-##-------------------Guia_de_funciones----------------------##
+###------------------Guia_de_funciones---------------------###
 ##############################################################
-##                                    |                     ##
-##   Tensor metrico                   |   metric_Mt()       ##
-##   T metrico inverso                |   metric_inv_Mt()   ##
-##   Simb Christofell clase 1         |   Christofell_Mt(k) ##
-##   Simb Christofell Clase 2         |   Conexion_Mt(k)    ##
-##   T Riemann 4-Cova                 |   riemann_Mt(i,j)   ##
-##   T Riemann 3-Cova y 1-Contrava    |   Riemann_Mt(i,j)   ##
-##   T Ricci                          |   Ricci_Mt()        ##
-##   Escalar de Curvatura             |   EscalarC()        ##
-##                                    |                     ##
+###                                 |                      ###
+###   Tensor metrico                |   metric_Mt()        ###
+###   T metrico inverso             |   metric_inv_Mt()    ###
+###   Simb Christofell clase 1      |   Christofell_Mt(k)  ###
+###   Simb Christofell Clase 2      |   Conexion_Mt(k)     ###
+###   T Riemann 4-Cova              |   riemann_Mt(i,j)    ###
+###   T Riemann 3-Cova y 1-Contrava |   Riemann_Mt(i,j)    ###
+###   T Ricci                       |   Ricci_Mt()         ###
+###   Escalar de Curvatura          |   EscalarC()         ###
+###                                 |                      ###
 ##############################################################
 ##############################################################
 

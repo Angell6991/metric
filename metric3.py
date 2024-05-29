@@ -23,26 +23,32 @@ import os
 os.system("clear")
 
 ##############################################################
-##-----------------Parametros_de_entrada--------------------##
+###----------------Parametros_de_entrada-------------------###
 ##############################################################
 
-mtc2.abrir_bloc_de_notas("variables.dat")
-mtc2.abrir_bloc_de_notas("no_variables.dat")
-mtc2.abrir_bloc_de_notas("tensor_metrico.dat")
+###---------------Rutas_archivos_de_texto------------------###
+
+Doc_tex_01  =   "intro_data/variables.dat"
+Doc_tex_02  =   "intro_data/no_variables.dat"
+Doc_tex_03  =   "intro_data/tensor_metrico.dat"
+
+mtc2.abrir_bloc_de_notas(Doc_tex_01)
+mtc2.abrir_bloc_de_notas(Doc_tex_02)
+mtc2.abrir_bloc_de_notas(Doc_tex_03)
 
 print("Calculando")
 
-cal =   mtc.metric("variables.dat", "no_variables.dat", "tensor_metrico.dat")
+cal =   mtc.metric(Doc_tex_01, Doc_tex_02, Doc_tex_03)
 n   =   cal.n
 
 print("Complete \n")
 
 
 ##############################################################
-##--------------Construcion_del_document_pdf----------------##
+###-------------Construcion_del_document_pdf---------------###
 ##############################################################
 
-print("Construcion del documento pdf")
+print("Construción del documento pdf")
 
 #-----------Arreglos_para_los_nombres_en_el_pdf--------------#
 
@@ -116,7 +122,7 @@ Latex_Escalar       =   sy.latex(
 
 
 ##############################################################
-##----------Construcion_y_escritura_en_latex----------------##
+###---------Construcion_y_escritura_en_latex---------------###
 ##############################################################
 
 
