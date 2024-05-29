@@ -1,15 +1,17 @@
 import tkinter as tk
+import os 
 from tkinter import scrolledtext
 from tkinter import font as tkfont
 from tkinter import colorchooser
 from PIL import Image, ImageTk  
 
-###################################
-###-------Fonts_necesarias------###
-###################################
-###     Tex Gyre Chorus         ###
-###     Inconsolata             ###
-###################################
+####################################################
+###---------------Fonts_necesarias---------------###
+####################################################
+###     Tex Gyre Chorus                          ###
+###     Inconsolata                              ###
+####################################################
+
 
 class BlocDeNotas:
     default_image_path = "logo_doc/logo.png"
@@ -37,10 +39,10 @@ class BlocDeNotas:
         self.font_size = font_size
 
         self.imagen = Image.open(self.default_image_path)
-        self.imagen.thumbnail((180, 150))  # Redimensionar la imagen manteniendo la proporción
+        self.imagen.thumbnail((180, 150))
         self.imagen_tk = ImageTk.PhotoImage(self.imagen)
         self.imagen_label = tk.Label(self.root, image=self.imagen_tk, bg=self.window_bg_color)
-        self.imagen_label.pack(side=tk.TOP)
+        self.imagen_label.pack(side=tk.TOP, pady=(10, 5))
         
         self.mensaje_label = tk.Label(
                 self.root, 
@@ -48,7 +50,18 @@ class BlocDeNotas:
                 bg=self.window_bg_color, 
                 fg=button_bg_color,
                 font=("Tex Gyre Chorus", 25))  
-        self.mensaje_label.pack(side=tk.TOP)
+        self.mensaje_label.pack(side=tk.TOP, pady=(0, 10))
+
+        nombre_archivo = os.path.basename(archivo_predeterminado)
+        nombre_archivo_sin_extension = os.path.splitext(nombre_archivo)[0]
+
+        self.nombre_archivo_label = tk.Label(
+                self.root, 
+                text="Introduce " + nombre_archivo_sin_extension,
+                bg=self.window_bg_color, 
+                fg=self.font_color,
+                font=(font_family, font_size))  
+        self.nombre_archivo_label.pack(side=tk.TOP, fill=tk.X, pady=(0, 10))
 
         self.scrollbar_x = tk.Scrollbar(self.root, orient="horizontal")
         
@@ -59,34 +72,30 @@ class BlocDeNotas:
                 height=15, 
                 xscrollcommand=self.scrollbar_x.set,
                 font=(font_family, font_size)) 
-        self.text_area.pack(expand=True, fill="both")
+        self.text_area.pack(expand=True, fill="both", padx=20, pady=(0, 10))
         self.text_area.configure(
                 fg=self.font_color, 
                 bg=self.text_bg_color, 
                 insertbackground=color_puntero) 
         
         self.scrollbar_x.config(command=self.text_area.xview)
-        self.scrollbar_x.pack(side="bottom", fill="x")
-        
-        with open(archivo_predeterminado, 'r') as archivo:
-            contenido = archivo.read()
-            self.text_area.insert(tk.END, contenido)
-        
-        self.nombre_archivo_label = tk.Label(
-                self.root, text=archivo_predeterminado, 
-                bg=self.window_bg_color, 
-                fg=self.font_color,
-                font=(font_family, font_size))  # Configurar la fuente y el tamaño aquí
-        self.nombre_archivo_label.pack(side=tk.TOP, fill=tk.X)
-        
+
         self.guardar_y_cerrar = tk.Button(
                 self.root, 
                 text="Next", 
                 command=self.guardar_y_cerrar, 
                 bg=self.button_bg_color,
-                font=(font_family, font_size))  # Configurar la fuente y el tamaño aquí
-        self.guardar_y_cerrar.pack()
+                font=(font_family, font_size)) 
+        self.guardar_y_cerrar.pack(pady=(10, 0))
 
+        # Empaqueta el Scrollbar horizontal después de empaquetar el text_area
+        self.scrollbar_x.pack(side="bottom", fill="x", padx=20)
+
+        with open(archivo_predeterminado, 'r') as archivo:
+            contenido = archivo.read()
+            self.text_area.insert(tk.END, contenido)
+        
+        
     def guardar_y_cerrar(self):
         contenido = self.text_area.get("1.0", tk.END)
         with open(self.archivo_predeterminado, 'w') as archivo:
@@ -98,7 +107,9 @@ def abrir_bloc_de_notas(archivo):
     app.root.mainloop()
 
 
-###------------------Prueba--------------------###
+####################################################
+###-------------------Prueba---------------------###
+####################################################
 
-abrir_bloc_de_notas("intro_data/variables.dat")
+abrir_bloc_de_notas("intro_data/no_variables.dat")
 
