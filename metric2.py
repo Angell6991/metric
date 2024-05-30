@@ -54,7 +54,8 @@ class BlocDeNotas:
         self.imagen = Image.open(self.default_image_path)
         self.imagen.thumbnail((180, 150))  
         self.imagen_ctk = ctk.CTkImage(self.imagen, size=(180, 150))  
-        self.imagen_label = ctk.CTkLabel(self.root, image=self.imagen_ctk, fg_color=self.window_bg_color)
+        self.imagen_label = ctk.CTkLabel(
+                self.root, text="", image=self.imagen_ctk, fg_color=self.window_bg_color)
         self.imagen_label.pack(side=ctk.TOP, pady=(10, 5))
 
     def _setup_labels(self):
@@ -120,6 +121,6 @@ def abrir_bloc_de_notas(archivo):
 ####-------------------Prueba---------------------###
 #####################################################
 
-abrir_bloc_de_notas("intro_data/no_variables.dat")
+# abrir_bloc_de_notas("intro_data/no_variables.dat")
 
 
