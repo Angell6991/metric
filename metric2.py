@@ -1,21 +1,18 @@
-import tkinter as tk
-import os 
-from tkinter import scrolledtext
-from tkinter import font as tkfont
-from tkinter import colorchooser
-from PIL import Image, ImageTk  
+import customtkinter as ctk
+from PIL import Image
+import os
 
-####################################################
-###---------------Fonts_necesarias---------------###
-####################################################
-###     Tex Gyre Chorus                          ###
-###     Inconsolata                              ###
-####################################################
+#####################################################
+####---------------Fonts_necesarias---------------###
+#####################################################
+####     Tex Gyre Chorus                          ###
+####     Inconsolata                              ###
+#####################################################
 
 
 class BlocDeNotas:
     default_image_path = "logo_doc/logo.png"
-    
+
     def __init__(
             self, 
             archivo_predeterminado, 
@@ -25,10 +22,13 @@ class BlocDeNotas:
             button_bg_color="#5AEDA3",
             color_puntero="#FFFFFF",
             font_family="Inconsolata",  
-            font_size=12):        
+            font_size=20):
 
-        self.root = tk.Tk()
-        self.root.configure(bg=window_bg_color)
+        ctk.set_appearance_mode("dark")
+        ctk.set_default_color_theme("dark-blue")
+
+        self.root = ctk.CTk()
+        self.root.configure(fg_color=window_bg_color)
         self.archivo_predeterminado = archivo_predeterminado
         self.font_color = font_color
         self.window_bg_color = window_bg_color
@@ -38,66 +38,71 @@ class BlocDeNotas:
         self.font_family = font_family
         self.font_size = font_size
 
-        self.imagen = Image.open(self.default_image_path)
-        self.imagen.thumbnail((180, 150))
-        self.imagen_tk = ImageTk.PhotoImage(self.imagen)
-        self.imagen_label = tk.Label(self.root, image=self.imagen_tk, bg=self.window_bg_color)
-        self.imagen_label.pack(side=tk.TOP, pady=(10, 5))
-        
-        self.mensaje_label = tk.Label(
-                self.root, 
-                text="Metric3", 
-                bg=self.window_bg_color, 
-                fg=button_bg_color,
-                font=("Tex Gyre Chorus", 25))  
-        self.mensaje_label.pack(side=tk.TOP, pady=(0, 10))
+        self._setup_ui()
+        self._load_file_content()
 
-        nombre_archivo = os.path.basename(archivo_predeterminado)
+    def _setup_ui(self):
+        self._setup_image()
+        self._setup_labels()
+        self._setup_text_area()
+        self._setup_save_button()
+
+    def _setup_image(self):
+        self.imagen = Image.open(self.default_image_path)
+        self.imagen.thumbnail((180, 150))  # Ajusta el tamaño de la imagen
+        self.imagen_ctk = ctk.CTkImage(self.imagen, size=(180, 150))  
+        self.imagen_label = ctk.CTkLabel(self.root, image=self.imagen_ctk, fg_color=self.window_bg_color)
+        self.imagen_label.pack(side=ctk.TOP, pady=(10, 5))
+
+    def _setup_labels(self):
+        self.mensaje_label = ctk.CTkLabel(
+            self.root, 
+            text="Metric3", 
+            fg_color=self.window_bg_color, 
+            text_color=self.button_bg_color,
+            font=("Tex Gyre Chorus", 40))
+        self.mensaje_label.pack(side=ctk.TOP, pady=(0, 10))
+
+        nombre_archivo = os.path.basename(self.archivo_predeterminado)
         nombre_archivo_sin_extension = os.path.splitext(nombre_archivo)[0]
 
-        self.nombre_archivo_label = tk.Label(
-                self.root, 
-                text="Introduce " + nombre_archivo_sin_extension,
-                bg=self.window_bg_color, 
-                fg=self.font_color,
-                font=(font_family, font_size))  
-        self.nombre_archivo_label.pack(side=tk.TOP, fill=tk.X, pady=(0, 10))
+        self.nombre_archivo_label = ctk.CTkLabel(
+            self.root, 
+            text=f"Introduce {nombre_archivo_sin_extension}",
+            fg_color=self.window_bg_color, 
+            text_color=self.font_color,
+            font=(self.font_family, self.font_size))
+        self.nombre_archivo_label.pack(side=ctk.TOP, fill=ctk.X, pady=(0, 10))
 
-        self.scrollbar_x = tk.Scrollbar(self.root, orient="horizontal")
-        
-        self.text_area = scrolledtext.ScrolledText(
-                self.root, 
-                wrap="none", 
-                width=40, 
-                height=15, 
-                xscrollcommand=self.scrollbar_x.set,
-                font=(font_family, font_size)) 
+    def _setup_text_area(self):
+        self.text_area = ctk.CTkTextbox(
+            self.root, 
+            wrap="none", 
+            width=40, 
+            height=15, 
+            font=(self.font_family, self.font_size))  # Configura la fuente y el tamaño de fuente aquí
         self.text_area.pack(expand=True, fill="both", padx=20, pady=(0, 10))
         self.text_area.configure(
-                fg=self.font_color, 
-                bg=self.text_bg_color, 
-                insertbackground=color_puntero) 
-        
-        self.scrollbar_x.config(command=self.text_area.xview)
+            text_color=self.font_color, 
+            bg_color=self.text_bg_color)
 
-        self.guardar_y_cerrar = tk.Button(
-                self.root, 
-                text="Next", 
-                command=self.guardar_y_cerrar, 
-                bg=self.button_bg_color,
-                font=(font_family, font_size)) 
-        self.guardar_y_cerrar.pack(pady=(10, 0))
+    def _setup_save_button(self):
+        self.guardar_y_cerrar_button = ctk.CTkButton(
+            self.root, 
+            text="Next", 
+            command=self.guardar_y_cerrar, 
+            fg_color=self.button_bg_color,
+            text_color=self.window_bg_color,
+            font=(self.font_family, self.font_size))  # Configura la fuente y el tamaño de fuente aquí
+        self.guardar_y_cerrar_button.pack(pady=(10, 20))
 
-        # Empaqueta el Scrollbar horizontal después de empaquetar el text_area
-        self.scrollbar_x.pack(side="bottom", fill="x", padx=20)
-
-        with open(archivo_predeterminado, 'r') as archivo:
+    def _load_file_content(self):
+        with open(self.archivo_predeterminado, 'r') as archivo:
             contenido = archivo.read()
-            self.text_area.insert(tk.END, contenido)
-        
-        
+            self.text_area.insert(ctk.END, contenido)
+
     def guardar_y_cerrar(self):
-        contenido = self.text_area.get("1.0", tk.END)
+        contenido = self.text_area.get("1.0", ctk.END)
         with open(self.archivo_predeterminado, 'w') as archivo:
             archivo.write(contenido)
         self.root.destroy()
@@ -107,9 +112,9 @@ def abrir_bloc_de_notas(archivo):
     app.root.mainloop()
 
 
-####################################################
-###-------------------Prueba---------------------###
-####################################################
+#####################################################
+####-------------------Prueba---------------------###
+#####################################################
 
 abrir_bloc_de_notas("intro_data/no_variables.dat")
 
