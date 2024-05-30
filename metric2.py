@@ -16,6 +16,8 @@ class BlocDeNotas:
     def __init__(
             self, 
             archivo_predeterminado, 
+            width=400, 
+            height=600, 
             font_color="#FFFFFF", 
             window_bg_color="#1D1D1D", 
             text_bg_color="#353535", 
@@ -28,6 +30,7 @@ class BlocDeNotas:
         ctk.set_default_color_theme("dark-blue")
 
         self.root = ctk.CTk()
+        self.root.geometry(f"{width}x{height}")  # Define el tamaño de la ventana
         self.root.configure(fg_color=window_bg_color)
         self.archivo_predeterminado = archivo_predeterminado
         self.font_color = font_color
@@ -49,7 +52,7 @@ class BlocDeNotas:
 
     def _setup_image(self):
         self.imagen = Image.open(self.default_image_path)
-        self.imagen.thumbnail((180, 150))  # Ajusta el tamaño de la imagen
+        self.imagen.thumbnail((180, 150))  
         self.imagen_ctk = ctk.CTkImage(self.imagen, size=(180, 150))  
         self.imagen_label = ctk.CTkLabel(self.root, image=self.imagen_ctk, fg_color=self.window_bg_color)
         self.imagen_label.pack(side=ctk.TOP, pady=(10, 5))
@@ -80,7 +83,7 @@ class BlocDeNotas:
             wrap="none", 
             width=40, 
             height=15, 
-            font=(self.font_family, self.font_size))  # Configura la fuente y el tamaño de fuente aquí
+            font=(self.font_family, self.font_size)) 
         self.text_area.pack(expand=True, fill="both", padx=20, pady=(0, 10))
         self.text_area.configure(
             text_color=self.font_color, 
@@ -93,7 +96,8 @@ class BlocDeNotas:
             command=self.guardar_y_cerrar, 
             fg_color=self.button_bg_color,
             text_color=self.window_bg_color,
-            font=(self.font_family, self.font_size))  # Configura la fuente y el tamaño de fuente aquí
+            hover_color="#FFFFFF",  
+            font=(self.font_family, self.font_size))  
         self.guardar_y_cerrar_button.pack(pady=(10, 20))
 
     def _load_file_content(self):
@@ -117,4 +121,5 @@ def abrir_bloc_de_notas(archivo):
 #####################################################
 
 abrir_bloc_de_notas("intro_data/no_variables.dat")
+
 
