@@ -47,6 +47,7 @@ n   =   cal.n
 
 print("Complete \n")
 
+os.system("claer")
 
 ##############################################################
 ###-------------Construcion_del_document_pdf---------------###
@@ -201,11 +202,12 @@ with doc.create(tex.Section("Escalar de Curvatura")):
 
 # os.remove("Metric_doc.pdf")
 doc.generate_pdf("Metric_doc", clean_tex=True)                  #True: borra todos los archivos de latex una vez cerado el pdf
-os.system("zathura Metric_doc.pdf &")             
+# os.system("zathura Metric_doc.pdf &")             
 
 print("Complete \n")
 
 app.cerrar_ventana_calculando()
+wp.ventana_finalizada("zathura Metric_doc.pdf &")
 #------------------------------------------------------------#
 
 
