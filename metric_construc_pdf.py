@@ -17,6 +17,7 @@
 import metric as mtc 
 import pylatex as tex
 import sympy as sy
+import os
 
 def construc_pdf(Doc_tex_01, Doc_tex_02, Doc_tex_03): 
 
@@ -175,6 +176,10 @@ def construc_pdf(Doc_tex_01, Doc_tex_02, Doc_tex_03):
 
     # os.remove("Metric_doc.pdf")
     doc.generate_pdf("Metric_doc", clean_tex=True)                  #True: borra todos los archivos de latex una vez cerado el pdf
+
+    #--------------moviendo_el_pdf_de_directorio-----------------#
+    ruta_us    =   os.path.expanduser("~/") #muestra la ruta de usuario, equibalente a pwd en directorio ~/ 
+    os.system("mv Metric_doc.pdf " + ruta_us) # Moviendo el pdf al directorio de usuario
 
     #------------------------------------------------------------#
 

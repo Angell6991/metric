@@ -1,14 +1,18 @@
 import metric_construc_pdf as cpdf  
 import metric_block_note as block
 import metric_windows as ws
+import os
 
 ##################################################
 ###--------Introcciendo_ruta_de_data-----------###
 ##################################################
 
-doc_texto_01  =   "intro_data/variables.dat"
-doc_texto_02  =   "intro_data/no_variables.dat"
-doc_texto_03  =   "intro_data/tensor_metrico.dat"
+ruta    =   os.getcwd() #obtener la ruta del directorio con python, esto es equibalente al comado "pwd"
+ruta_usuario    =   os.path.expanduser("~/") #muestra la ruta de usuario, equibalente a pwd en directorio ~/ 
+
+doc_texto_01  =   ruta + "/intro_data/variables.dat"
+doc_texto_02  =   ruta + "/intro_data/no_variables.dat"
+doc_texto_03  =   ruta + "/intro_data/tensor_metrico.dat"
 
 ###----Editando_data_con_el_block_de_notas-----###
 
@@ -30,5 +34,5 @@ ws.ventana_carga(
         lambda: cpdf.construc_pdf(doc_texto_01,doc_texto_02,doc_texto_03))
 
 ###------------------view_pdf------------------###
-ws.ventana_finalizada("zathura  Metric_doc.pdf &")
+ws.ventana_finalizada("zathura " + ruta_usuario + "/Metric_doc.pdf &")
 
