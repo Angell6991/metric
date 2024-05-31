@@ -14,6 +14,7 @@
 ##############################################################
  ############################################################
 
+import windows_process as wp
 import metric as mtc 
 import metric2 as mtc2
 import pylatex as tex
@@ -35,6 +36,9 @@ Doc_tex_03  =   "intro_data/tensor_metrico.dat"
 mtc2.abrir_bloc_de_notas(Doc_tex_01)
 mtc2.abrir_bloc_de_notas(Doc_tex_02)
 mtc2.abrir_bloc_de_notas(Doc_tex_03)
+
+app =   wp.AppVentanas()
+app.abrir_ventana_calculando()
 
 print("Calculando")
 
@@ -192,6 +196,7 @@ with doc.create(tex.Section("Escalar de Curvatura")):
         data=[tex.NoEscape("R = " + Latex_Escalar)]))
     doc.append("\n")
 
+
 #--------------------Generando_pdf---------------------------#
 
 # os.remove("Metric_doc.pdf")
@@ -200,6 +205,7 @@ os.system("zathura Metric_doc.pdf &")
 
 print("Complete \n")
 
+app.cerrar_ventana_calculando()
 #------------------------------------------------------------#
 
 
