@@ -14,9 +14,9 @@
 ##############################################################
  ############################################################
 
-import windows_process as wp
+import metric_window_finish as wf
+import metric_block_note as block
 import metric as mtc 
-import metric2 as mtc2
 import pylatex as tex
 import sympy as sy
 import os 
@@ -33,12 +33,9 @@ Doc_tex_01  =   "intro_data/variables.dat"
 Doc_tex_02  =   "intro_data/no_variables.dat"
 Doc_tex_03  =   "intro_data/tensor_metrico.dat"
 
-mtc2.abrir_bloc_de_notas(Doc_tex_01)
-mtc2.abrir_bloc_de_notas(Doc_tex_02)
-mtc2.abrir_bloc_de_notas(Doc_tex_03)
-
-app =   wp.AppVentanas()
-app.abrir_ventana_calculando()
+block.abrir_bloc_de_notas(Doc_tex_01)
+block.abrir_bloc_de_notas(Doc_tex_02)
+block.abrir_bloc_de_notas(Doc_tex_03)
 
 print("Calculando")
 
@@ -47,7 +44,7 @@ n   =   cal.n
 
 print("Complete \n")
 
-os.system("claer")
+os.system("clear")
 
 ##############################################################
 ###-------------Construcion_del_document_pdf---------------###
@@ -206,8 +203,7 @@ doc.generate_pdf("Metric_doc", clean_tex=True)                  #True: borra tod
 
 print("Complete \n")
 
-app.cerrar_ventana_calculando()
-wp.ventana_finalizada("zathura Metric_doc.pdf &")
+wf.ventana_finalizada("zathura Metric_doc.pdf &")
 #------------------------------------------------------------#
 
 
