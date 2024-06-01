@@ -7,12 +7,12 @@ import os
 ###--------Introcciendo_ruta_de_data-----------###
 ##################################################
 
-ruta    =   os.getcwd() #obtener la ruta del directorio con python, esto es equibalente al comado "pwd"
+# ruta    =   os.getcwd() #obtener la ruta del directorio con python, esto es equibalente al comado "pwd"
 ruta_usuario    =   os.path.expanduser("~/") #muestra la ruta de usuario, equibalente a pwd en directorio ~/ 
 
-doc_texto_01  =   ruta + "/intro_data/variables.dat"
-doc_texto_02  =   ruta + "/intro_data/no_variables.dat"
-doc_texto_03  =   ruta + "/intro_data/tensor_metrico.dat"
+doc_texto_01  =   ruta_usuario + "/.config/metric/intro_data/variables.dat"
+doc_texto_02  =   ruta_usuario + "/.config/metric/intro_data/no_variables.dat"
+doc_texto_03  =   ruta_usuario + "/.config/metric/intro_data/tensor_metrico.dat"
 
 ###----Editando_data_con_el_block_de_notas-----###
 
