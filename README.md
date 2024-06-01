@@ -51,28 +51,51 @@ hay que tener en cuenta que esta instalación llevará un tiempo considerable.
 
 #### Librerías de python 
 
+Instala tkinter con: 
+```sh
+sudo dnf install python-tkinter 
+```
+
+Instala sympy, pandas, pillow, pylatex, customtkinter y pyinstaller con pip:
+```sh
+pip install sympy pandas pillow pylatex customtkinter pyinstaller
+```
+
+#### Clonar el repositorio
+Una vez instalados los programas y librerías anteriores, se procede a clonar 
+el repositorio en la ruta:
 ```sh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
 
+Ya que se ha clonado el repositorio, se puede ejecutar el programa sin necesidad 
+de montarlo en el sistema, a través del intérprete de Python. Solo hay que dirigirse 
+al directorio en el cual se clonó el repositorio:
 ```sh
-git clone https://github.com/Angell6991/metric.git ~/.config/metric
+cd ~/.config/metric
 ```
+Y para iniciar el programa con el intérprete de Python, se ejecuta en la terminal:
+```sh
+python metric3.py 
+```
+De esta forma, el programa ya sería usable. Sin embargo, si se desea ejecutarlo 
+desde cualquier parte del sistema, te invito a seguir con la guía de instalación.
 
-```sh
-git clone https://github.com/Angell6991/metric.git ~/.config/metric
-```
 
+#### Montando Metric3 con pyinstaller
+Una vez clonado el repositorio, nos dirigimos al directorio de guardado:
 ```sh
-git clone https://github.com/Angell6991/metric.git ~/.config/metric
+cd ~/.config/metric
 ```
+Creamos el binario haciendo uso de PyInstaller:
+```sh
+pyinstaller --hidden-import=PIL._tkinter_finder --onefile metric3.py
+```
+Ten presente que este proceso puede llevar un tiempo.
 
-```sh
-git clone https://github.com/Angell6991/metric.git ~/.config/metric
-```
 
-```sh
-git clone https://github.com/Angell6991/metric.git ~/.config/metric
-```
+
 
 ## Uso
+```sh
+```
