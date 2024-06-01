@@ -9,9 +9,10 @@ import os
 ####     Inconsolata                              ###
 #####################################################
 
+ruta_01    =   os.path.expanduser("~/") # Ruta directorio Usuario
 
 class BlocDeNotas:
-    default_image_path = "logo_doc/logo.png"
+    default_image_path = ruta_01 + "/.config/metric/logo_doc/logo.png"
 
     def __init__(
             self, 
