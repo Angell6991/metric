@@ -1,65 +1,27 @@
- #####################################################################
-#######################################################################
-###       							    ###
-###  MMM       MMM  EEEEEE  TTTTTTTT   RRRRRRR   IIIIII      CCCCC  ###
-###  MM MM   MM MM  EE         TT      RR     R    II      CCC      ###
-###  MM  MM MM  MM  EE         TT      RR     R    II     CC        ###
-###  MM    M    MM  EEEEEE     TT      RRRRRRR     II    CC         ###
-###  MM         MM  EE         TT      RR  RR      II     CC        ###
-###  MM         MM  EE         TT      RR   RR     II      CCC      ###
-###  MM         MM  EEEEEE     TT      RR    RR  IIIIII      CCCCC  ###
-### 						           	    ###
-#######################################################################
- #####################################################################
+<p align="center">
+  <img src="logo_doc/logo.png"  width="200">
+</p>
 
+<h2 align="center" style="font-family: Tex Gyre Chorus; color: #5AEDA3;">Metric3</h2>
 
-#######################################################################
-##------------------------INSTRUCTIONS-------------------------------##
-#######################################################################
+## Tabla de Contenidos
 
+- [Instalación](#instalación)
+- [Uso](#uso)
 
-Para la inplementacion del programa se requieren las tres partes 
-metric.py y metric3.py  
+## Instalación
 
-Y para su ejecuacion mediante el interprete de python se debe de 
-ejecutar metric3.py
+Pasos detallados para instalar la aplicación. Incluye comandos específicos y requisitos previos.
 
-librerias python:
-sympy
-pandas
-pylatex
+### Prerrequisitos
 
-Adicionalmente se requiere tener instalado nvim, LateX y zathura los cuales 
-se pueden instalar en arch linux con:
+Lista de software y versiones necesarias para ejecutar la aplicación.
 
-sudo pacman -S zathura
-sudo pacman -S texlive-most
-sudo pacman -S texlive-core
-sudo pacman -S nvim 
+- [Requisito 1](#)
+- [Requisito 2](#)
 
-#######################################################################
-##--------------------------COMPILATOR-------------------------------##
-#######################################################################
+### Clonación del Repositorio
 
-Install compilador python:
-pip install pyinstaller 
-
-compilar python:
-pyinstaller nombre_archivo.py
-pyinstaller --onefile nombre_archivo.py
-
-para montar el ejecutable en el sistema hay que moverlo á alguna rutas
-mostradas con el comando:
-
-echo $PATH
-
-#------------------------------IGNORE---------------------------------#
-
-compilar latex : 
-pdflatex nombre_del_archivo.tex
-
-buscar ruta de un programa:
-which nombre_programa
-
-
-
+```sh
+git clone https://github.com/Angell6991/metric.git ~/.config
+```
