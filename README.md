@@ -21,7 +21,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 ## Tabla de Contenidos
 
 - [Instalación](#instalación)
-    - [Intalación automatizada](#intalación-automatizada)
+    - [Instalación automatizada](#instalación-automatizada)
     - [Instalación manual](#instalación-manual)
 - [Uso](#uso)
 
@@ -33,7 +33,7 @@ paquetes RPM. Sin embargo, si eres usuario de distribuciones basadas en Arch o D
 hacer uso de los gestores de dichas distribuciones.
 
 
-### Intalación automatizada
+### Instalación automatizada
 Dentro de la documentación se ha desarrollado un script el cual procede a instalar y configurar 
 de manera automática el programa Metric3. Sin embargo, este instalador solo es 
 para Fedora; en caso de usar distribuciones basadas en Arch o Debian, tendrá que seguir con la 
