@@ -21,6 +21,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 ## Tabla de Contenidos
 
 - [Instalación](#instalación)
+    - [Intalación automatizada](#intalación-automatizada)
     - [Instalación manual](#instalación-manual)
 - [Uso](#uso)
 
@@ -31,6 +32,37 @@ que se desarrolló. Por lo tanto, los comandos de instalación estarán orientad
 paquetes RPM. Sin embargo, si eres usuario de distribuciones basadas en Arch o Debian, bastará con 
 hacer uso de los gestores de dichas distribuciones.
 
+
+### Intalación automatizada
+Dentro de la documentación se ha desarrollado un script el cual procede a instalar y configurar 
+de manera automática el programa Metric3. Sin embargo, este instalador solo es 
+para Fedora; en caso de usar distribuciones basadas en Arch o Debian, tendrá que seguir con la 
+instalación manual.
+
+#### Pasos instalación con el script 
+
+Instalación de LaTeX, se sugiere seguir la 
+[Documentación de LaTex en Fedora](https://docs.fedoraproject.org/en-US/neurofedora/latex/)
+,y se recomienda instalar Texlive-full. Sin embargo, al ser una instalación más completa, 
+hay que tener en cuenta que esta instalación llevará un tiempo considerable.
+
+Clonar el repositorio:
+```sh
+git clone https://github.com/Angell6991/metric.git ~/.config/metric
+```
+Dar permisos de ejecución al script:
+```sh
+chmod u+x ~/.config/metric/install.sh
+```
+Ejecutar el script:
+```sh
+~/.config/metric/install.sh 
+```
+Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
+parte del equipo a través de:
+```sh
+metric3
+```
 
 ### Intalación manual
 
