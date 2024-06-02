@@ -64,7 +64,7 @@ parte del equipo a través de:
 metric3
 ```
 
-### Intalación manual
+### Instalación manual
 
 #### Prerrequisitos
 Como requisito previo para instalar Metric3 en el sistema, se necesita tener instalados el 
