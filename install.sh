@@ -9,8 +9,13 @@ pip install sympy pandas pillow pylatex customtkinter pyinstaller
 clear
 
 echo "Creando el binario con PyInstaller..."
-pyinstaller --hidden-import=PIL._tkinter_finder --onefile metric3.py
+pyinstaller --hidden-import=PIL._tkinter_finder --onefile ~/.config/metric/metric3.py
 clear
+
+# Moviendo Carpetas de construccion del binario
+mv build ~/.config/metric/
+mv dist ~/.config/metric/
+mv metric3.spec ~/.config/metric/
 
 echo "Montando el binario en el sistema..."
 # Obtener el directorio actual
