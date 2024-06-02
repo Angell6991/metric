@@ -148,7 +148,7 @@ seguir estos dos pasos:
 
 Eliminar el directorio donde se clonó el repositorio:
 ```sh
-rm -r ~/.config/metric
+rm -rf ~/.config/metric
 ```
 
 Eliminar el enlace simbólico:
