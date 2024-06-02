@@ -156,8 +156,31 @@ Eliminar el enlace simbólico:
 sudo rm /usr/local/bin/metric3
 ```
 
-
-
 ## Uso
+
+
+<p align="left">
+  <img src="logo_doc/var.png"  width="700">
+</p>
+
+texto de prueva
+
+<p align="right">
+  <img src="logo_doc/no_var.png"  width="700">
+</p>
+
+<p align="left">
+  <img src="logo_doc/met.png"  width="700">
+</p>
+
+$$
+\begin{equation}
+ds^{2} = r^{2} d \psi^{2} + r^{2} \sin^{2} \psi \; d \theta^{2}  + r^{2} \sin^{2} \psi \sin^{2} \theta \; d \phi^{2}
+\end{equation}
+$$
+
 ```sh
 ```
+
+
+
