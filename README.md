@@ -23,6 +23,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 - [Instalación](#instalación)
     - [Instalación automatizada](#instalación-automatizada)
     - [Instalación manual](#instalación-manual)
+- [Desinstalación](#desinstalación)
 - [Uso](#uso)
 
 
@@ -140,6 +141,21 @@ a través de:
 ```sh
 metric3
 ```
+
+## Desinstalación
+Si por alguna razón desea desinstalar el programa Metric3, es tan sencillo como 
+seguir estos dos pasos:
+
+Eliminar el directorio donde se clonó el repositorio:
+```sh
+rm -r ~/.config/metric
+```
+
+Eliminar el enlace simbólico:
+```sh
+sudo rm /usr/local/bin/metric3
+```
+
 
 
 ## Uso
