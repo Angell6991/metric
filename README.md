@@ -21,6 +21,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 ## Tabla de Contenidos
 
 - [Instalación](#instalación)
+    - [Instalación manual](#instalación-manual)
 - [Uso](#uso)
 
 
@@ -82,7 +83,7 @@ De esta forma, el programa ya sería usable. Sin embargo, si se desea ejecutarlo
 desde cualquier parte del sistema, te invito a seguir con la guía de instalación.
 
 
-#### Montando Metric3 con pyinstaller
+#### Montando Metric3 con PyInstaller
 Una vez clonado el repositorio, nos dirigimos al directorio de guardado:
 ```sh
 cd ~/.config/metric
@@ -93,7 +94,19 @@ pyinstaller --hidden-import=PIL._tkinter_finder --onefile metric3.py
 ```
 Ten presente que este proceso puede llevar un tiempo.
 
+Una vez terminada la creación del binario, este se encontrará en el 
+directorio "dist" recién creado dentro del directorio "metric". 
+Para montar el binario en el sistema, lo realizaremos mediante un enlace simbólico: 
+```sh
+sudo ln -s /home/my_user/.config/metric/dist/metric3 /usr/local/bin/metric3
+```
+Solo recuerda cambiar "my_user" por el nombre de usuario del equipo.
 
+De esta manera, ya podemos ejecutar el programa desde cualquier parte del equipo 
+a través de:
+```sh
+metric3
+```
 
 
 ## Uso
