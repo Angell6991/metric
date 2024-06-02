@@ -57,9 +57,14 @@ echo $PATH
 
 ## IGNORE
 
-compilar latex : 
+compilar latex con el compilador pdflatex: 
 ```sh
 pdflatex nombre_del_archivo.tex
+```
+
+compilar latex con el compilador xelatex: 
+```sh
+xelatex principal.tex
 ```
 
 buscar ruta de un programa:
