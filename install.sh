@@ -18,14 +18,7 @@ mv dist ~/.config/metric/
 mv metric3.spec ~/.config/metric/
 
 echo "Montando el binario en el sistema..."
-# Obtener el directorio actual
-current_dir=$(pwd)
-
-# Obtener el directorio del usuario
-# user_dir=$(eval echo ~$USER)
-
-# Crear el enlace simbólico
-sudo ln -s "$current_dir/dist/metric3" "/usr/local/bin/metric3"
+sudo ln -s ~/.config/metric/dist/metric3 /usr/local/bin/metric3
 clear
 
 echo "Instalación completa."

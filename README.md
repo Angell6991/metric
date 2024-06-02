@@ -130,9 +130,10 @@ Una vez terminada la creación del binario, este se encontrará en el
 directorio "dist" recién creado dentro del directorio "metric". 
 Para montar el binario en el sistema, lo realizaremos mediante un enlace simbólico: 
 ```sh
-sudo ln -s /home/my_user/.config/metric/dist/metric3 /usr/local/bin/metric3
+sudo ln -s ~/.config/metric/dist/metric3 /usr/local/bin/metric3
 ```
-Solo recuerda cambiar "my_user" por el nombre de usuario del equipo.
+<!-- sudo ln -s /home/my_user/.config/metric/dist/metric3 /usr/local/bin/metric3 -->
+<!-- Solo recuerda cambiar "my_user" por el nombre de usuario del equipo. -->
 
 De esta manera, ya podemos ejecutar el programa desde cualquier parte del equipo 
 a través de:
