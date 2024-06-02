@@ -158,8 +158,34 @@ sudo rm /usr/local/bin/metric3
 
 ## Uso
 $$
-ds^{2} = r^{2} \hspace{0.5em} d \psi^{2}  + r^{2} \sin^{2} \psi \hspace{0.5em} d \theta^{2}+ r^{2} \sin^{2} \psi \sin^{2} \theta \hspace{0.5em} d \phi^{2}
+ds^{2} \hspace{0.5em}=\hspace{0.5em} r^{2} \hspace{0.5em} d \psi^{2}  \hspace{0.5em}+\hspace{0.5em} r^{2} \sin^{2} \psi \hspace{0.5em} d \theta^{2}\hspace{0.5em}+\hspace{0.5em} r^{2} \sin^{2} \psi \sin^{2} \theta \hspace{0.5em} d \phi^{2}
 $$
+
+$$
+x^{i} =
+\begin{pmatrix}
+\psi \\ 
+\theta \\
+\phi \\
+\end{pmatrix}
+$$
+
+$$
+g_{ij} =
+\begin{pmatrix}
+r^{2} & 0 & 0 \\ 
+0 & r^{2} \sin^{2} \psi & 0 \\
+0 & 0 & r^{2} \sin^{2} \psi \sin^{2} \theta \\
+\end{pmatrix} = \begin{pmatrix}
+g_{11} & g_{12} & g_{13} \\ 
+g_{21} & g_{22} & g_{23} \\
+g_{31} & g_{32} & g_{33} \\
+\end{pmatrix}
+$$
+
+
+
+
 
 <p align="left">
   <img src="logo_doc/var.png"  width="700">
