@@ -157,7 +157,9 @@ sudo rm /usr/local/bin/metric3
 ```
 
 ## Uso
-
+$$
+ds^{2} = r^{2} \hspace{0.5em} d \psi^{2}  + r^{2} \sin^{2} \psi \hspace{0.5em} d \theta^{2}+ r^{2} \sin^{2} \psi \sin^{2} \theta \hspace{0.5em} d \phi^{2}
+$$
 
 <p align="left">
   <img src="logo_doc/var.png"  width="700">
@@ -173,11 +175,7 @@ texto de prueva
   <img src="logo_doc/met.png"  width="700">
 </p>
 
-$$
-\begin{equation}
-ds^{2} = r^{2} d \psi^{2} + r^{2} \sin^{2} \psi \; d \theta^{2}  + r^{2} \sin^{2} \psi \sin^{2} \theta \; d \phi^{2}
-\end{equation}
-$$
+
 
 ```sh
 ```
