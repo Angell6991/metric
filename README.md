@@ -157,9 +157,13 @@ sudo rm /usr/local/bin/metric3
 ```
 
 ## Uso
+Para la guia de uso de Metric3 consideremos la metrica de una 3-esfera como ejemplo:
+
 $$
 ds^{2} \hspace{0.5em}=\hspace{0.5em} r^{2} \hspace{0.5em} d \psi^{2}  \hspace{0.5em}+\hspace{0.5em} r^{2} \sin^{2} \psi \hspace{0.5em} d \theta^{2}\hspace{0.5em}+\hspace{0.5em} r^{2} \sin^{2} \psi \sin^{2} \theta \hspace{0.5em} d \phi^{2}
 $$
+
+Cullos grados de livertad estan dados por las coordenadas: 
 
 $$
 x^{i} =
@@ -169,6 +173,36 @@ x^{i} =
 \phi \\
 \end{pmatrix}
 $$
+
+Una vez identificado esto de la metrica podemos empezar a usar Metric3 iniciandolo con: 
+```sh
+metric3
+```
+lo primero que mostrara el programa al iniciar es una ventana la cual pedira ingresar las variables, 
+estas variables son las coordenadas que representan los grados de livertad de la metrica:
+
+<p align="center">
+  <img src="logo_doc/var.png"  width="800">
+</p>
+
+La forma de introducir la variables se muestra en la imagen anterior, es importante tener en cuenta 
+que al ingresar los datos en el programa  solo idetifica la sintacxis de sympy de python.
+
+una vez introducidas las variables damos a el boton "Next", con lo cual se despliega la siguente 
+ventana:
+
+<p align="center">
+  <img src="logo_doc/no_var.png"  width="800">
+</p>
+
+En esta ventana se pide introducir las no variables, que en otras palabras son todos los parametros
+que sn constantes de la metrica, como nuestra metrica es la de ua 3-esfera el radio "r" es constate
+por lo que es en esta parte donde lo intrducimos. Es inportante tener en cuenta si la metrica posee
+mas parametros constantes es en esta ventana donde se deben ingresar todos estas deominadas no variables
+en dado caso que estes trabaad c ua metrica que pssea mas de un parametro constante estos se debe itrducir  
+en forma de cloumna de la misma forma como se hace con las coordeadas e la ventana anterior.
+
+
 
 $$
 g_{ij} =
@@ -186,19 +220,8 @@ $$
 
 
 
-
-<p align="left">
-  <img src="logo_doc/var.png"  width="700">
-</p>
-
-texto de prueva
-
-<p align="right">
-  <img src="logo_doc/no_var.png"  width="700">
-</p>
-
-<p align="left">
-  <img src="logo_doc/met.png"  width="700">
+<p align="center">
+  <img src="logo_doc/met.png"  width="800">
 </p>
 
 
