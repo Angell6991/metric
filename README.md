@@ -7,10 +7,9 @@
 
 
 ## Descripción
-Metríc3 es un proyecto desarrollado en Python desde Fedora 40 y configurado esencialmente para el 
-window manager BSPWM, con compatibilidad en cualquier sistema operativo de Linux. Se encarga de 
-realizar los cálculos de los símbolos de Christoffel, el tensor de Riemann, el tensor de Ricci y 
-el escalar de curvatura.
+Metríc3 es un proyecto desarrollado en Python con compatibilidad en cualquier sistema operativo de Linux. 
+Se encarga de realizar los cálculos de los símbolos de Christoffel, el tensor de Riemann, el tensor 
+de Ricci y el escalar de curvatura.
 
 Las características distintivas de este proyecto son que, para realizar los cálculos mencionados 
 anteriormente, hace uso de una interfaz de usuario que permite introducir de manera explícita el 
@@ -28,36 +27,66 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 
 
 ## Instalación
-La guía de instalación de Metric3 la desarrollaremos para Fedora, simplemente por ser el entorno en el 
-que se desarrolló. Por lo tanto, los comandos de instalación estarán orientados al uso del gestor de 
-paquetes RPM. Sin embargo, si eres usuario de distribuciones basadas en Arch o Debian, bastará con 
-hacer uso de los gestores de dichas distribuciones.
+La guía de instalación de Metric3 la desarrollaremos para Arch. Por lo tanto, los comandos de 
+instalación estarán orientados al uso del gestor de paquetes pacman. Sin embargo, si eres 
+usuario de distribuciones basadas en Fedora o Debian, bastará con hacer uso de los gestores de 
+dichas distribuciones.
 
 
 ### Instalación automatizada
-Dentro de la documentación se ha desarrollado un script el cual procede a instalar y configurar 
-de manera automática el programa Metric3. Sin embargo, este instalador solo es 
-para Fedora; en caso de usar distribuciones basadas en Arch o Debian, tendrá que seguir con la 
-instalación manual.
+Dentro de la documentación se ha desarrollado por el mometo dos scripts el cual procede a 
+instalar y configurar de manera automática el programa Metric3, para Arch y Fedora  en caso 
+de usar distribuciones basadas en Debian, tendrá que seguir con la instalación manual.
 
 #### Pasos instalación con el script 
 
-Instalación de LaTeX, se sugiere seguir la 
+##### Prerrequisitos
+
+Antes de instalar Metric3 se requiere tener LaTeX:
+
+Para instalar Latex en Arch se recomienta hacer uso de pacman para buscar
+y ver la disponibilidad de los paquetes de texlive
+
+```sh
+pacman -Ss texlive
+```
+De esta forma la instalacion la podras realizar de forma personalizada segun 
+tus nesecidades, aun que se recomienda realizar una instalación tipo full
+para evitar problemas de como falta de fonts o falta de compiladores de latex
+
+Para dedora se sugiere seguir la 
 [Documentación de LaTex en Fedora](https://docs.fedoraproject.org/en-US/neurofedora/latex/)
 ,y se recomienda instalar Texlive-full. Sin embargo, al ser una instalación más completa, 
 hay que tener en cuenta que esta instalación llevará un tiempo considerable.
 
-Clonar el repositorio:
+
+Una vez instalado Latex sin importar el tipo de distribucion de linux, clona el repositorio:
 ```sh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
+
+###### Arch
 Dar permisos de ejecución al script:
 ```sh
-chmod u+x ~/.config/metric/install.sh
+chmod u+x ~/.config/metric/install_Arch.sh
 ```
 Ejecutar el script:
 ```sh
-~/.config/metric/install.sh 
+~/.config/metric/install_Arch.sh 
+```
+Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
+parte del equipo a través de:
+```sh
+metric3
+```
+###### Fedora
+Dar permisos de ejecución al script:
+```sh
+chmod u+x ~/.config/metric/install_Fedora.sh
+```
+Ejecutar el script:
+```sh
+~/.config/metric/install_Fedora.sh 
 ```
 Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
 parte del equipo a través de:
