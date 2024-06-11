@@ -27,7 +27,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 
 
 ## Instalación
-La guía de instalación de Metric3 la desarrollaremos para Arch. Por lo tanto, los comandos de 
+La guía de instalación manual de Metric3 la desarrollaremos para Arch. Por lo tanto, los comandos de 
 instalación estarán orientados al uso del gestor de paquetes pacman. Sin embargo, si eres 
 usuario de distribuciones basadas en Fedora o Debian, bastará con hacer uso de los gestores de 
 dichas distribuciones.
@@ -52,9 +52,9 @@ pacman -Ss texlive
 ```
 De esta forma la instalacion la podras realizar de forma personalizada segun 
 tus nesecidades, aun que se recomienda realizar una instalación tipo full
-para evitar problemas de como falta de fonts o falta de compiladores de latex
+para evitar como  problemas la falta de fonts o falta de compiladores de latex
 
-Para dedora se sugiere seguir la 
+Para Fedora se sugiere seguir la 
 [Documentación de LaTex en Fedora](https://docs.fedoraproject.org/en-US/neurofedora/latex/)
 ,y se recomienda instalar Texlive-full. Sin embargo, al ser una instalación más completa, 
 hay que tener en cuenta que esta instalación llevará un tiempo considerable.
@@ -101,27 +101,37 @@ Como requisito previo para instalar Metric3 en el sistema, se necesita tener ins
 visor de PDF zathura, el lenguaje de programación Python, el gestor de paquetes de Python 
 pip y el sistema de composición de texto LaTeX.
 
-Para instalar Python, pip y zathura, simplemente utiliza el siguiente comando en la terminal:
+
+Instalar zathura junto a sus dependencias:
 ```sh
-sudo dnf install python python-pip zathura
+sudo pacman -S zathura zathura-pdf-mupdf zathura-ps zathura-djvu zathura-cb
 ```
+Instalar LaTex:
+Se recomienta hacer uso de pacman para buscar
+y ver la disponibilidad de los paquetes de texlive
 
-Para la instalación de LaTeX, se sugiere seguir la 
-[Documentación de LaTex en Fedora](https://docs.fedoraproject.org/en-US/neurofedora/latex/)
-,y se recomienda instalar Texlive-full. Sin embargo, al ser una instalación más completa, 
-hay que tener en cuenta que esta instalación llevará un tiempo considerable.
-
-
-#### Librerías de python 
-
-Instala tkinter con: 
 ```sh
-sudo dnf install python-tkinter 
+pacman -Ss texlive
 ```
+De esta forma la instalacion la podras realizar de forma personalizada segun 
+tus nesecidades, aun que se recomienda realizar una instalación tipo full
+para evitar como  problemas la falta de fonts o falta de compiladores de latex
 
-Instala sympy, pandas, pillow, pylatex, customtkinter y pyinstaller con pip:
+En caso de querer hacer la instalacion completa de LaTex con pacman:
+
 ```sh
-pip install sympy pandas pillow pylatex customtkinter pyinstaller
+sudo pacman -S texlive
+```
+Y escoger la instalacion de todos los paquetes
+
+Instalar Python junto a sus dependencias con pacman:
+```sh
+sudo pacman -S python python-pip python-sympy python-pandas python-pillow tk
+```
+Instalar las Las dependencias y librerias de Python que no estan en pacman 
+las cuales se pueden descarcagr con pip:
+```sh
+pip install pylatex customtkinter pyinstaller
 ```
 
 #### Clonar el repositorio
