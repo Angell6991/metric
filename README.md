@@ -22,6 +22,9 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 
 - [Instalación](#instalación)
     - [Instalación automatizada](#instalación-automatizada)
+        -[Prerrequisitos](#prerrequisitos)
+        -[Arch](#arch)
+        -[Fedora](#fedora)
     - [Instalación manual](#instalación-manual)
 - [Desinstalación](#desinstalación)
 - [Uso del Programa](#uso-del-programa)
@@ -65,7 +68,7 @@ Una vez instalado LaTeX, sin importar el tipo de distribución de Linux, clona e
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
 
-###### Arch
+##### Arch
 Dar permisos de ejecución al script:
 ```sh
 chmod u+x ~/.config/metric/install_Arch.sh
@@ -80,7 +83,7 @@ parte del equipo a través de:
 metric3
 ```
 
-###### Fedora
+##### Fedora
 Dar permisos de ejecución al script:
 ```sh
 chmod u+x ~/.config/metric/install_Fedora.sh
