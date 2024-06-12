@@ -24,7 +24,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
     - [Instalación automatizada](#instalación-automatizada)
     - [Instalación manual](#instalación-manual)
 - [Desinstalación](#desinstalación)
-- [Uso del Programa](#uso del programa)
+- [Uso del Programa](#uso-del-programa)
 
 
 ## Instalación
