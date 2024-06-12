@@ -22,9 +22,9 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 
 - [Instalación](#instalación)
     - [Instalación automatizada](#instalación-automatizada)
-        -[Prerrequisitos](#prerrequisitos)
-        -[Arch](#arch)
-        -[Fedora](#fedora)
+        - [Prerrequisitos](#prerrequisitos)
+        - [Arch](#arch)
+        - [Fedora](#fedora)
     - [Instalación manual](#instalación-manual)
 - [Desinstalación](#desinstalación)
 - [Uso del Programa](#uso-del-programa)
