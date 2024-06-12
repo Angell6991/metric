@@ -24,7 +24,7 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
     - [Instalación automatizada](#instalación-automatizada)
     - [Instalación manual](#instalación-manual)
 - [Desinstalación](#desinstalación)
-- [Uso](#uso)
+- [Uso del Programa](#uso del programa)
 
 
 ## Instalación
@@ -205,7 +205,7 @@ sudo rm /usr/local/bin/metric3
 
 
 
-## Uso
+## Uso del Programa
 Para la guía de uso de Metríc3, consideremos la métrica de una 3-esfera como ejemplo:
 
 $$
