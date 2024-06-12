@@ -256,7 +256,7 @@ es en esta ventana donde se introduce. Es importante tener en cuenta dos cosas:
 >deben introducir, en forma de columna, de la misma manera como se hace con las coordenadas en la 
 >ventana anterior.
 
-[!TIP]
+>[!TIP]
 >Segundo: si la métrica no tiene parámetros constantes, se debe dejar la palabra "none" escrita en 
 >esta ventana para evitar problemas de cálculo en el programa.
 
