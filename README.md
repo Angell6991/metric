@@ -134,7 +134,8 @@ se pueden descargar con pip:
 ```sh
 pip install pylatex customtkinter pyinstaller
 ```
-Nota: antes de usar pip, asegúrate de que pip pueda instalar dependencias en el sistema. 
+[!IMPORT] 
+Antes de usar pip, asegúrate de que pip pueda instalar dependencias en el sistema. 
 En el caso de usar Arch, este sistema puede negar los permisos de instalación a pip. Para 
 solucionar este problema, hay al menos dos opciones: la primera es otorgar permisos a pip 
 para instalar directamente en el sistema, y la segunda es instalar con pip a través de un 
@@ -300,7 +301,7 @@ Este documento PDF siempre se guarda con el nombre "Metric_doc.pdf" en el direct
 ```sh
 ~/
 ```
-Nota: Cada vez que se ejecute Metríc3, el documento "Metric_doc.pdf" se verá afectado 
+[!NOTE] Cada vez que se ejecute Metríc3, el documento "Metric_doc.pdf" se verá afectado 
 por el cambio en los datos introducidos en el programa. Por lo tanto, si deseas guardar 
 los resultados de una métrica previamente calculada, bastará con cambiarle el nombre a 
 "Metric_doc.pdf" por otro. De esta forma, al ejecutar nuevamente Metríc3, se generará un 
