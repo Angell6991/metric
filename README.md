@@ -7,9 +7,10 @@
 
 
 ## Descripción
-Metríc3 es un proyecto desarrollado en Python con compatibilidad en cualquier sistema operativo de Linux. 
-Se encarga de realizar los cálculos de los símbolos de Christoffel, el tensor de Riemann, el tensor 
-de Ricci y el escalar de curvatura.
+Metríc3 es un proyecto desarrollado en Python, compatible con cualquier sistema operativo Linux. 
+Se encarga de realizar los cálculos de los símbolos de Christoffel, el tensor de Riemann, 
+el tensor de Ricci y el escalar de curvatura.
+
 
 Las características distintivas de este proyecto son que, para realizar los cálculos mencionados 
 anteriormente, hace uso de una interfaz de usuario que permite introducir de manera explícita el 
@@ -27,32 +28,31 @@ que contiene los resultados de los cálculos en lenguaje matemático y ordenados
 
 
 ## Instalación
-La guía de instalación manual de Metric3 la desarrollaremos para Arch. Por lo tanto, los comandos de 
-instalación estarán orientados al uso del gestor de paquetes pacman. Sin embargo, si eres 
-usuario de distribuciones basadas en Fedora o Debian, bastará con hacer uso de los gestores de 
-dichas distribuciones.
+La guía de instalación manual de Metríc3 la desarrollaremos para Arch. Por lo tanto, los comandos 
+de instalación estarán orientados al uso del gestor de paquetes pacman. Sin embargo, si eres usuario 
+de distribuciones basadas en Fedora o Debian, bastará con hacer uso de los gestores de dichas distribuciones.
 
 
 ### Instalación automatizada
-Dentro de la documentación se ha desarrollado por el mometo dos scripts el cual procede a 
-instalar y configurar de manera automática el programa Metric3, para Arch y Fedora  en caso 
-de usar distribuciones basadas en Debian, tendrá que seguir con la instalación manual.
+Dentro de la documentación se han desarrollado, por el momento, dos scripts que proceden a 
+instalar y configurar de manera automática el programa Metríc3 para Arch y Fedora. En caso 
+de usar distribuciones basadas en Debian, se tendrá que seguir con la instalación manual.
+
 
 #### Pasos instalación con el script 
 
 ##### Prerrequisitos
 
-Antes de instalar Metric3 se requiere tener LaTeX:
+Antes de instalar Metríc3, se requiere tener LaTeX:
 
-Para instalar Latex en Arch se recomienta hacer uso de pacman para buscar
-y ver la disponibilidad de los paquetes de texlive
-
+Para instalar LaTeX en Arch, se recomienda hacer uso de pacman para buscar y ver la disponibilidad 
+de los paquetes de texlive:
 ```sh
 pacman -Ss texlive
 ```
-De esta forma la instalacion la podras realizar de forma personalizada segun 
-tus nesecidades, aun que se recomienda realizar una instalación tipo full
-para evitar como  problemas la falta de fonts o falta de compiladores de latex
+De esta forma, la instalación la podrás realizar de forma personalizada según tus necesidades, 
+aunque se recomienda realizar una instalación tipo full para evitar problemas como la falta 
+de fuentes o compiladores de LaTeX.
 
 Para Fedora se sugiere seguir la 
 [Documentación de LaTex en Fedora](https://docs.fedoraproject.org/en-US/neurofedora/latex/)
@@ -60,7 +60,7 @@ Para Fedora se sugiere seguir la
 hay que tener en cuenta que esta instalación llevará un tiempo considerable.
 
 
-Una vez instalado Latex sin importar el tipo de distribucion de linux, clona el repositorio:
+Una vez instalado LaTeX, sin importar el tipo de distribución de Linux, clona el repositorio:
 ```sh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
@@ -79,6 +79,7 @@ parte del equipo a través de:
 ```sh
 metric3
 ```
+
 ###### Fedora
 Dar permisos de ejecución al script:
 ```sh
@@ -97,42 +98,48 @@ metric3
 ### Instalación manual
 
 #### Prerrequisitos
-Como requisito previo para instalar Metric3 en el sistema, se necesita tener instalados el 
-visor de PDF zathura, el lenguaje de programación Python, el gestor de paquetes de Python 
+Como requisito previo para instalar Metríc3 en el sistema, se necesita tener instalados el 
+visor de PDF Zathura, el lenguaje de programación Python, el gestor de paquetes de Python 
 pip y el sistema de composición de texto LaTeX.
 
-
-Instalar zathura junto a sus dependencias:
+Instalar Zathura junto con sus dependencias:
 ```sh
 sudo pacman -S zathura zathura-pdf-mupdf zathura-ps zathura-djvu zathura-cb
 ```
-Instalar LaTex:
-Se recomienta hacer uso de pacman para buscar
-y ver la disponibilidad de los paquetes de texlive
 
+
+Instalar LaTeX:
+Se recomienda hacer uso de pacman para buscar y verificar la disponibilidad de los paquetes 
+de texlive:
 ```sh
 pacman -Ss texlive
 ```
-De esta forma la instalacion la podras realizar de forma personalizada segun 
-tus nesecidades, aun que se recomienda realizar una instalación tipo full
-para evitar como  problemas la falta de fonts o falta de compiladores de latex
+De esta forma, la instalación la podrás realizar de forma personalizada según tus necesidades, 
+aunque se recomienda realizar una instalación tipo full para evitar problemas como la falta de
+fuentes o compiladores de LaTeX.
 
-En caso de querer hacer la instalacion completa de LaTex con pacman:
-
+En caso de querer hacer la instalación completa de LaTeX con pacman:
 ```sh
 sudo pacman -S texlive
 ```
-Y escoger la instalacion de todos los paquetes
+Y elegir la instalación de todos los paquetes.
 
-Instalar Python junto a sus dependencias con pacman:
+
+Instalar Python junto con sus dependencias utilizando pacman:
 ```sh
 sudo pacman -S python python-pip python-sympy python-pandas python-pillow tk
 ```
-Instalar las Las dependencias y librerias de Python que no estan en pacman 
-las cuales se pueden descarcagr con pip:
+Instalar las dependencias y bibliotecas de Python que no están disponibles en pacman y que 
+se pueden descargar con pip:
 ```sh
 pip install pylatex customtkinter pyinstaller
 ```
+Nota: antes de usar pip, asegúrate de que pip pueda instalar dependencias en el sistema. 
+En el caso de usar Arch, este sistema puede negar los permisos de instalación a pip. Para 
+solucionar este problema, hay al menos dos opciones: la primera es otorgar permisos a pip 
+para instalar directamente en el sistema, y la segunda es instalar con pip a través de un 
+entorno virtual.
+
 
 #### Clonar el repositorio
 Una vez instalados los programas y librerías anteriores, se procede a clonar 
@@ -195,14 +202,16 @@ Eliminar el enlace simbólico:
 sudo rm /usr/local/bin/metric3
 ```
 
+
+
 ## Uso
-Para la guia de uso de Metric3 consideremos la metrica de una 3-esfera como ejemplo:
+Para la guía de uso de Metríc3, consideremos la métrica de una 3-esfera como ejemplo:
 
 $$
 ds^{2} \hspace{0.5em}=\hspace{0.5em} r^{2} \hspace{0.5em} d \psi^{2}  \hspace{0.5em}+\hspace{0.5em} r^{2} \sin^{2} \psi \hspace{0.5em} d \theta^{2}\hspace{0.5em}+\hspace{0.5em} r^{2} \sin^{2} \psi \sin^{2} \theta \hspace{0.5em} d \phi^{2}
 $$
 
-Cullos grados de livertad estan dados por las coordenadas: 
+Cuyos grados de libertad están dados por las coordenadas:
 
 $$
 x^{i} =
@@ -213,35 +222,44 @@ x^{i} =
 \end{pmatrix}
 $$
 
-Una vez identificado esto de la metrica podemos empezar a usar Metric3 iniciandolo con: 
+Una vez identificado esto de la métrica, podemos empezar a usar Metríc3 iniciándolo con:
+
 ```sh
 metric3
 ```
-lo primero que mostrara el programa al iniciar es una ventana la cual pedira ingresar las variables, 
-estas variables son las coordenadas que representan los grados de livertad de la metrica:
+
+Lo primero que mostrará el programa al iniciar es una ventana que pedirá ingresar las variables. 
+Estas variables son las coordenadas que representan los grados de libertad de la métrica:
 
 <p align="center">
   <img src="logo_doc/var.png"  width="800">
 </p>
 
-La forma de introducir la variables se muestra en la imagen anterior, es importante tener en cuenta 
-que al ingresar los datos en el programa  solo idetifica la sintacxis de sympy de python.
 
-una vez introducidas las variables damos a el boton "Next", con lo cual se despliega la siguente 
-ventana:
+La forma de introducir las variables se muestra en la imagen anterior. Es importante tener 
+en cuenta que al ingresar los datos en el programa, solo identifica la sintaxis de Sympy de Python.
+
+Una vez introducidas las variables, damos clic en el botón "Next", con lo cual se despliega la 
+siguiente ventana:
 
 <p align="center">
   <img src="logo_doc/no_var.png"  width="800">
 </p>
 
-En esta ventana se pide introducir las no variables, que en otras palabras son todos los parametros
-que sn constantes de la metrica, como nuestra metrica es la de ua 3-esfera el radio "r" es constate
-por lo que es en esta parte donde lo intrducimos. Es inportante tener en cuenta si la metrica posee
-mas parametros constantes es en esta ventana donde se deben ingresar todos estas deominadas no variables
-en dado caso que estes trabaad c ua metrica que pssea mas de un parametro constante estos se debe itrducir  
-en forma de cloumna de la misma forma como se hace con las coordeadas e la ventana anterior.
+Esta ventana pide introducir las no variables o, en otras palabras, los parámetros que son constantes 
+en la métrica. Por ejemplo, en nuestra métrica de la 3-esfera, el radio "r" es constante, por lo que 
+es en esta ventana donde se introduce. Es importante tener en cuenta dos cosas:
+
+Primero: si la métrica posee más de un parámetro constante, es en esta ventana donde todos estos se 
+deben introducir, en forma de columna, de la misma manera como se hace con las coordenadas en la 
+ventana anterior.
+
+Segundo: si la métrica no tiene parámetros constantes, se debe dejar la palabra "none" escrita en 
+esta ventana para evitar problemas de cálculo en el programa.
 
 
+Una vez introducidas las constantes o el parámetro "none", damos clic en el botón "Next", con lo 
+cual procedemos a desplegar la ventana donde introduciremos el tensor métrico:
 
 $$
 g_{ij} =
@@ -256,17 +274,37 @@ g_{31} & g_{32} & g_{33} \\
 \end{pmatrix}
 $$
 
+Para introducir el tensor métrico, solo hay que tener en cuenta la parte triangular superior de 
+la matriz, ya que Metric3 reconoce el tensor métrico como una matriz simétrica. Para evitar la 
+introducción de datos innecesarios, el programa solo requiere la parte triangular superior de 
+la matriz.
 
-
+La forma de introducir los datos es la siguiente: se comienza siempre introduciendo la 
+primera fila de la matriz. Una vez introducida la primera fila, se procede con la segunda, 
+pero comenzando siempre desde la diagonal principal de la matriz. Se sigue este proceso 
+sucesivamente hasta terminar de introducir toda la parte triangular superior, como se muestra 
+en la siguiente imagen:
 
 <p align="center">
   <img src="logo_doc/met.png"  width="800">
 </p>
 
+Nótese que todas las componentes del tensor métrico siempre se deben introducir en vertical, 
+como se muestra en la imagen.
 
+Una vez introducido el tensor métrico, hacemos clic en el botón "Next" y el programa procederá 
+a iniciar el cálculo. Una vez finalizado el cálculo, se podrá disponer de la opción de ver los 
+resultados en un documento PDF.
 
+Este documento PDF siempre se guarda con el nombre "Metric_doc.pdf" en el directorio:
 ```sh
+~/
 ```
+Nota: Cada vez que se ejecute Metríc3, el documento "Metric_doc.pdf" se verá afectado 
+por el cambio en los datos introducidos en el programa. Por lo tanto, si deseas guardar 
+los resultados de una métrica previamente calculada, bastará con cambiarle el nombre a 
+"Metric_doc.pdf" por otro. De esta forma, al ejecutar nuevamente Metríc3, se generará un 
+nuevo "Metric_doc.pdf" que no alterará el obtenido previamente.
 
 
 
