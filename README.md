@@ -290,8 +290,9 @@ en la siguiente imagen:
   <img src="logo_doc/met.png"  width="800">
 </p>
 
-Nótese que todas las componentes del tensor métrico siempre se deben introducir en vertical, 
-como se muestra en la imagen.
+>[!NOTE]
+>Todas las componentes del tensor métrico siempre se deben introducir en vertical, 
+>como se muestra en la imagen.
 
 Una vez introducido el tensor métrico, hacemos clic en el botón "Next" y el programa procederá 
 a iniciar el cálculo. Una vez finalizado el cálculo, se podrá disponer de la opción de ver los 
