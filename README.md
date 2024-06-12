@@ -301,11 +301,12 @@ Este documento PDF siempre se guarda con el nombre "Metric_doc.pdf" en el direct
 ```sh
 ~/
 ```
-[!NOTE] Cada vez que se ejecute Metríc3, el documento "Metric_doc.pdf" se verá afectado 
-por el cambio en los datos introducidos en el programa. Por lo tanto, si deseas guardar 
-los resultados de una métrica previamente calculada, bastará con cambiarle el nombre a 
-"Metric_doc.pdf" por otro. De esta forma, al ejecutar nuevamente Metríc3, se generará un 
-nuevo "Metric_doc.pdf" que no alterará el obtenido previamente.
+>[!NOTE] 
+>Cada vez que se ejecute Metríc3, el documento "Metric_doc.pdf" se verá afectado 
+>por el cambio en los datos introducidos en el programa. Por lo tanto, si deseas guardar 
+>los resultados de una métrica previamente calculada, bastará con cambiarle el nombre a 
+>"Metric_doc.pdf" por otro. De esta forma, al ejecutar nuevamente Metríc3, se generará un 
+>nuevo "Metric_doc.pdf" que no alterará el obtenido previamente.
 
 
 
