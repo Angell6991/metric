@@ -134,12 +134,12 @@ se pueden descargar con pip:
 ```sh
 pip install pylatex customtkinter pyinstaller
 ```
-[!IMPORT] 
-Antes de usar pip, asegúrate de que pip pueda instalar dependencias en el sistema. 
-En el caso de usar Arch, este sistema puede negar los permisos de instalación a pip. Para 
-solucionar este problema, hay al menos dos opciones: la primera es otorgar permisos a pip 
-para instalar directamente en el sistema, y la segunda es instalar con pip a través de un 
-entorno virtual.
+>[!IMPORTANT] 
+>Antes de usar pip, asegúrate de que pip pueda instalar dependencias en el sistema. 
+>En el caso de usar Arch, este sistema puede negar los permisos de instalación a pip. Para 
+>solucionar este problema, hay al menos dos opciones: la primera es otorgar permisos a pip 
+>para instalar directamente en el sistema, y la segunda es instalar con pip a través de un 
+>entorno virtual.
 
 
 #### Clonar el repositorio
