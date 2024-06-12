@@ -251,12 +251,14 @@ Esta ventana pide introducir las no variables o, en otras palabras, los parámet
 en la métrica. Por ejemplo, en nuestra métrica de la 3-esfera, el radio "r" es constante, por lo que 
 es en esta ventana donde se introduce. Es importante tener en cuenta dos cosas:
 
-Primero: si la métrica posee más de un parámetro constante, es en esta ventana donde todos estos se 
-deben introducir, en forma de columna, de la misma manera como se hace con las coordenadas en la 
-ventana anterior.
+>[!TIP]
+>Primero: si la métrica posee más de un parámetro constante, es en esta ventana donde todos estos se 
+>deben introducir, en forma de columna, de la misma manera como se hace con las coordenadas en la 
+>ventana anterior.
 
-Segundo: si la métrica no tiene parámetros constantes, se debe dejar la palabra "none" escrita en 
-esta ventana para evitar problemas de cálculo en el programa.
+[!TIP]
+>Segundo: si la métrica no tiene parámetros constantes, se debe dejar la palabra "none" escrita en 
+>esta ventana para evitar problemas de cálculo en el programa.
 
 
 Una vez introducidas las constantes o el parámetro "none", damos clic en el botón "Next", con lo 
