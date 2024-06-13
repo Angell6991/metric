@@ -22,19 +22,19 @@ import os
 ###------------------Guia_de_funciones---------------------###
 ##############################################################
 ###                                 |                      ###
-###   Tensor metrico                |   metric_Mt()        ###
-###   T metrico inverso             |   metric_inv_Mt()    ###
-###   Simb Christofell clase 1      |   Christofell_Mt(k)  ###
-###   Simb Christofell Clase 2      |   Conexion_Mt(k)     ###
-###   T Riemann 4-Cova              |   riemann_Mt(i,j)    ###
-###   T Riemann 3-Cova y 1-Contrava |   Riemann_Mt(i,j)    ###
-###   T Ricci                       |   Ricci_Mt()         ###
+###   Tensor metrico                |   metric()           ###
+###   T metrico inverso             |   metric_inv()       ###
+###   Simb Christofell clase 1      |   Christofell(k)     ###
+###   Simb Christofell Clase 2      |   Conexion(k)        ###
+###   T Riemann 4-Cova              |   riemann(i,j)       ###
+###   T Riemann 3-Cova y 1-Contrava |   Riemann(i,j)       ###
+###   T Ricci                       |   Ricci()            ###
 ###   Escalar de Curvatura          |   EscalarC()         ###
 ###                                 |                      ###
 ##############################################################
 ##############################################################
 
-class metric:
+class metric_dat:
 
     def __init__(self, variables, no_variables, Tensor_metric):
         
@@ -240,25 +240,25 @@ class metric:
     ##--------Definicion_de_funciones_en_forma_matricial--------##
     ##############################################################
 
-    def metric_Mt(self):
+    def metric(self):
         return self.G 
 
-    def metric_inv_Mt(self):
+    def metric_inv(self):
         return self.Ginv
 
-    def Christofell_Mt(self,k):
+    def Christofell(self,k):
         return self.VChristofell[k]
 
-    def Conexion_Mt(self,k):
+    def Conexion(self,k):
         return self.VConexion[k]
 
-    def riemann_Mt(self,j,i): 
+    def riemann(self,j,i): 
         return self.Vriemann[j,i]
 
-    def Riemann_Mt(self,j,i):
+    def Riemann(self,j,i):
         return self.VRiemann[j,i]
 
-    def Ricci_Mt(self):
+    def Ricci(self):
         return self.VRicci 
 
     def EscalarC(self):
@@ -269,33 +269,40 @@ class metric:
 
 #--------------------instanciando_objeto---------------------#
 
-"""
-os.system("clear")
+# os.system("clear")
 
-inst  =   metric("variables.dat","no_variables.dat","tensor_metrico.dat")
+# variables       =   "~/.config/metric/support_files/intro_data/variables.dat"
+# no_variables    =   "~/.config/metric/support_files/intro_data/no_variables.dat"
+# tensor_metrico  =   "~/.config/metric/support_files/intro_data/tensor_metrico.dat"
 
-print("tensor metrico")
-print(inst.metric_Mt(), "\n")
+# inst  =   metric_dat(variables, no_variables, tensor_metrico)
 
-print("tensor metrico inverso")
-print(inst.metric_inv_Mt(), "\n")
+# # inst  =   metric_dat("variables.dat","no_variables.dat","tensor_metrico.dat")
 
-print("simbolo de chrisfofell")
-print(inst.Christofell_Mt(0), "\n")
 
-print("conexion")
-print(inst.Conexion_Mt(1), "\n")
+# print("tensor metrico")
+# print(inst.metric(), "\n")
 
-print("tensor de riemann")
-print(inst.riemann_Mt(0,1), "\n")
+# print("tensor metrico inverso")
+# print(inst.metric_inv(), "\n")
 
-print("tensor de Riemann")
-print(inst.Riemann_Mt(0,1), "\n")
+# print("simbolo de chrisfofell")
+# print(inst.Christofell(0), "\n")
 
-print("tensor de Ricci")
-print(inst.Ricci_Mt(), "\n")
+# print("conexion")
+# print(inst.Conexion(1), "\n")
 
-print("Escalar de curvatura")
-print(inst.EscalarC())
+# print("tensor de riemann")
+# print(inst.riemann(0,1), "\n")
 
-"""
+# print("tensor de Riemann")
+# print(inst.Riemann(0,1), "\n")
+
+# print("tensor de Ricci")
+# print(inst.Ricci(), "\n")
+
+# print("Escalar de curvatura")
+# print(inst.EscalarC())
+
+# # time calculation 3-sphera 24s
+

@@ -21,7 +21,7 @@ import os
 
 def construc_pdf(Doc_tex_01, Doc_tex_02, Doc_tex_03): 
 
-    cal =   mtc.metric(Doc_tex_01, Doc_tex_02, Doc_tex_03)
+    cal =   mtc.metric_dat(Doc_tex_01, Doc_tex_02, Doc_tex_03)
     n   =   cal.n
 
     ##############################################################
@@ -46,26 +46,26 @@ def construc_pdf(Doc_tex_01, Doc_tex_02, Doc_tex_03):
     #------------Reescritura_de_funciones_a_latex----------------#
 
     latex_metric        =   sy.latex(
-            cal.metric_Mt()).replace(
+            cal.metric()).replace(
                     "\left[","\left( \;").replace(
                             "\\right]","\; \\right)") 
 
     latex_metric_int    =   sy.latex(
-            cal.metric_inv_Mt()).replace(
+            cal.metric_inv()).replace(
                     "\left[","\left( \;").replace(
                             "\\right]","\; \\right)")
 
     latex_chritofell    =   []
     for i in range(n):
         latex_chritofell.append(sy.latex(
-            cal.Christofell_Mt(i)).replace(
+            cal.Christofell(i)).replace(
                 "\left[","\left( \;").replace(
                     "\\right]","\; \\right)"))
 
     latex_conexion      =   []
     for i in range(n):
         latex_conexion.append(sy.latex(
-            cal.Conexion_Mt(i)).replace(
+            cal.Conexion(i)).replace(
                 "\left[","\left( \;").replace(
                     "\\right]","\; \\right)"))
 
@@ -74,7 +74,7 @@ def construc_pdf(Doc_tex_01, Doc_tex_02, Doc_tex_03):
     for i in range(n):
         for j in range(n):
             latex_rimann.append(sy.latex(
-                cal.riemann_Mt(i,j)).replace(
+                cal.riemann(i,j)).replace(
                     "\left[","\left( \;").replace(
                         "\\right]","\; \\right)"))
             lista_rie.append(rie(i,j))
@@ -84,13 +84,13 @@ def construc_pdf(Doc_tex_01, Doc_tex_02, Doc_tex_03):
     for i in range(n):
         for j in range(n):
             latex_Rimann.append(sy.latex(
-                cal.Riemann_Mt(i,j)).replace(
+                cal.Riemann(i,j)).replace(
                     "\left[","\left( \;").replace(
                         "\\right]","\; \\right)"))
             lista_Rie.append(Rie(i,j))
 
     latex_Ricci         =   sy.latex(
-            cal.Ricci_Mt()).replace(
+            cal.Ricci()).replace(
                     "\left[","\left( \;").replace(
                             "\\right]","\; \\right)")
 
