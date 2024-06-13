@@ -71,11 +71,11 @@ git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ##### Arch
 Dar permisos de ejecución al script:
 ```sh
-chmod u+x ~/.config/metric/install_Arch.sh
+chmod u+x ~/.config/metric/scripts/install_Arch.sh
 ```
 Ejecutar el script:
 ```sh
-~/.config/metric/install_Arch.sh 
+~/.config/metric/scripts/install_Arch.sh 
 ```
 Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
 parte del equipo a través de:
@@ -86,11 +86,11 @@ metric3
 ##### Fedora
 Dar permisos de ejecución al script:
 ```sh
-chmod u+x ~/.config/metric/install_Fedora.sh
+chmod u+x ~/.config/metric/scripts/install_Fedora.sh
 ```
 Ejecutar el script:
 ```sh
-~/.config/metric/install_Fedora.sh 
+~/.config/metric/scripts/install_Fedora.sh 
 ```
 Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
 parte del equipo a través de:
