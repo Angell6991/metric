@@ -14,7 +14,7 @@
 ##############################################################
  ############################################################
 
-import metric as mtc 
+import modules.metric as mtc 
 import pylatex as tex
 import sympy as sy
 import os
