@@ -12,7 +12,7 @@ import os
 ruta_01    =   os.path.expanduser("~/") # Ruta directorio Usuario
 
 class BlocDeNotas:
-    default_image_path = ruta_01 + "/.config/metric/logo_doc/logo.png"
+    default_image_path = ruta_01 + "/.config/metric/support_files/images/logo/logo.png"
 
     def __init__(
             self, 
