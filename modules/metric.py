@@ -16,7 +16,6 @@
 
 import sympy as sy
 import pandas as pd
-import os
 
 ##############################################################
 ###------------------Guia_de_funciones---------------------###
@@ -61,7 +60,7 @@ class metric_dat:
             self.varr.append(sy.symbols(self.lista2[i][0]))
         
         self.varr       =      sy.Array(self.varr)
-       
+
 
         #--------------------Insert_tensor_metric--------------------#
         self.lista3     =       pd.read_csv(Tensor_metric, header = None)
@@ -99,7 +98,7 @@ class metric_dat:
         self.g   =    self.A + self.B
         self.G   =    sy.Array(self.g)
 
-    
+
         #---------------Tensor_metrico_inverso-----------------------#
         self.Ginv  =    sy.simplify(sy.factor(sy.Matrix(self.G).inv()))
         self.Ginv  =    sy.Array(self.Ginv)
@@ -131,55 +130,55 @@ class metric_dat:
         ##-----------Simbolos_de_Christofell_Clase_2----------------##
         ##############################################################
 
-        def conexion(i,j,k):
-            cx   =   0
-            for p in range(self.n):
-                D    =   self.Ginv[k,p]*self.VChristofell[p,j,i] 
-                cx   =   cx + D
-                #cx   =   simplify(factor(cx + D)) 
-            return cx
+        #def conexion(i,j,k):
+        #    cx   =   0
+        #    for p in range(self.n):
+        #        D    =   self.Ginv[k,p]*self.VChristofell[p,j,i] 
+        #        cx   =   cx + D
+        #        #cx   =   simplify(factor(cx + D)) 
+        #    return cx
 
-        self.VConexion  =   []
+        #self.VConexion  =   []
 
-        for k in range(self.n):
-            for j in range(self.n):
-                for i in range(self.n):
-                    self.VConexion.append(conexion(i,j,k)) 
+        #for k in range(self.n):
+        #    for j in range(self.n):
+        #        for i in range(self.n):
+        #            self.VConexion.append(conexion(i,j,k)) 
 
-        self.VConexion  =   sy.Array(self.VConexion, (self.n, self.n, self.n))
+        #self.VConexion  =   sy.Array(self.VConexion, (self.n, self.n, self.n))
 
 
         #############################################################
         ##----------Tensor_de_Riemann_4-Covariante-----------------##
         #############################################################
 
-        def DD(p,i,j,k):
-            D   =   0 
-            for s in range(self.n):
-                D   =   (
-                        D + self.VConexion[s,k,p]*self.VChristofell[s,i,j] 
-                        - self.VConexion[s,j,p]*self.VChristofell[s,i,k]
-                        )
+        # def DD(p,i,j,k):
+        #     D   =   0 
+        #     for s in range(self.n):
+        #         D   =   (
+        #                 D + self.VConexion[s,k,p]*self.VChristofell[s,i,j] 
+        #                 - self.VConexion[s,j,p]*self.VChristofell[s,i,k]
+        #                 )
 
-                D   =   sy.simplify(sy.factor(D))
-            return D
+        #         D   =   sy.simplify(sy.factor(D))
+        #     return D
 
-        self.Vriemann     =   []
+        # self.Vriemann     =   []
 
-        for p in range(self.n):
-            for i in range(self.n):
-                for j in range(self.n):
-                    for k in range(self.n):
-                        self.SS  =   (
-                                sy.diff(self.VChristofell[p,i,k], self.var[j]) - 
-                                sy.diff(self.VChristofell[p,i,j], self.var[k]) + 
-                                DD(p,i,j,k)
-                                )
+        # for p in range(self.n):
+        #     for i in range(self.n):
+        #         for j in range(self.n):
+        #             for k in range(self.n):
+        #                 self.SS  =   (
+        #                         sy.diff(self.VChristofell[p,i,k], self.var[j]) - 
+        #                         sy.diff(self.VChristofell[p,i,j], self.var[k]) + 
+        #                         DD(p,i,j,k)
+        #                         )
 
-                        self.SS  =   sy.simplify(sy.factor(self.SS))
-                        self.Vriemann.append(self.SS)
+        #                 self.SS  =   sy.simplify(sy.factor(self.SS))
+        #                 self.Vriemann.append(self.SS)
 
-        self.Vriemann     =   sy.Array(self.Vriemann, (self.n, self.n, self.n, self.n))
+        # self.Vriemann     =   sy.Array(self.Vriemann, (self.n, self.n, self.n, self.n))
 
 
         #############################################################
@@ -187,53 +186,53 @@ class metric_dat:
         #############################################################
 
 
-        def TRiemann(p,i,j,k):
-            TT  =   0
-            for s in range(self.n):
-                TT  =   TT + self.Ginv[p,s]*self.Vriemann[s,i,j,k]
-                TT  =   sy.simplify(sy.factor(TT))
-            return TT
+        # def TRiemann(p,i,j,k):
+        #     TT  =   0
+        #     for s in range(self.n):
+        #         TT  =   TT + self.Ginv[p,s]*self.Vriemann[s,i,j,k]
+        #         TT  =   sy.simplify(sy.factor(TT))
+        #     return TT
 
-        self.VRiemann     =   []
+        # self.VRiemann     =   []
 
-        for p in range(self.n):
-            for i in range(self.n):
-                for j in range(self.n):
-                    for k in range(self.n):
-                        self.VRiemann.append(TRiemann(p,i,j,k))
+        # for p in range(self.n):
+        #     for i in range(self.n):
+        #         for j in range(self.n):
+        #             for k in range(self.n):
+        #                 self.VRiemann.append(TRiemann(p,i,j,k))
 
-        self.VRiemann     =   sy.Array(self.VRiemann, (self.n, self.n, self.n, self.n))
+        # self.VRiemann     =   sy.Array(self.VRiemann, (self.n, self.n, self.n, self.n))
 
 
         #############################################################
         ##-------------------Tensor_de_Ricci-----------------------##
         #############################################################
 
-        def ricci(i,j):
-            ri  =   0
-            for s in range(self.n):
-                ri  =   ri + self.VRiemann[s,i,s,j]
-                ri  =   sy.simplify(sy.factor(ri))
-            return ri
+        # def ricci(i,j):
+        #     ri  =   0
+        #     for s in range(self.n):
+        #         ri  =   ri + self.VRiemann[s,i,s,j]
+        #         ri  =   sy.simplify(sy.factor(ri))
+        #     return ri
 
-        self.VRicci   =   []
+        # self.VRicci   =   []
 
-        for i in range(self.n):
-            for j in range(self.n):
-                self.VRicci.append(ricci(i,j))
+        # for i in range(self.n):
+        #     for j in range(self.n):
+        #         self.VRicci.append(ricci(i,j))
 
-        self.VRicci   =   sy.Array(self.VRicci, (self.n, self.n))
+        # self.VRicci   =   sy.Array(self.VRicci, (self.n, self.n))
 
 
         #############################################################
         ##-----------------Escalar_de_Curvatura--------------------##
         #############################################################
 
-        self.VEscalarC = 0
-        for i in range(self.n):
-            for j in range(self.n):
-                self.VEscalarC    =   self.VEscalarC + self.Ginv[i,j]*self.VRicci[i,j]
-                self.VEscalarC    =   sy.simplify(sy.factor(self.VEscalarC)) 
+        # self.VEscalarC = 0
+        # for i in range(self.n):
+        #     for j in range(self.n):
+        #         self.VEscalarC    =   self.VEscalarC + self.Ginv[i,j]*self.VRicci[i,j]
+        #         self.VEscalarC    =   sy.simplify(sy.factor(self.VEscalarC)) 
 
 
     ##############################################################
@@ -252,42 +251,46 @@ class metric_dat:
     def Conexion(self,k):
         return self.VConexion[k]
 
-    def riemann(self,j,i): 
-        return self.Vriemann[j,i]
+    # def riemann(self,j,i): 
+    #     return self.Vriemann[j,i]
 
-    def Riemann(self,j,i):
-        return self.VRiemann[j,i]
+    # def Riemann(self,j,i):
+    #     return self.VRiemann[j,i]
 
-    def Ricci(self):
-        return self.VRicci 
+    # def Ricci(self):
+    #     return self.VRicci 
 
-    def EscalarC(self):
-        return self.VEscalarC
+    # def EscalarC(self):
+    #     return self.VEscalarC
 
 
 #------------------------------------------------------------#
 
 #--------------------instanciando_objeto---------------------#
 
-# os.system("clear")
+import time
+import os
 
-# variables       =   "~/.config/metric/support_files/intro_data/variables.dat"
-# no_variables    =   "~/.config/metric/support_files/intro_data/no_variables.dat"
-# tensor_metrico  =   "~/.config/metric/support_files/intro_data/tensor_metrico.dat"
+os.system("clear")
 
-# inst  =   metric_dat(variables, no_variables, tensor_metrico)
+variables       =   "~/.config/metric/support_files/intro_data/variables.dat"
+no_variables    =   "~/.config/metric/support_files/intro_data/no_variables.dat"
+tensor_metrico  =   "~/.config/metric/support_files/intro_data/tensor_metrico.dat"
 
-# # inst  =   metric_dat("variables.dat","no_variables.dat","tensor_metrico.dat")
+start_time = time.time()                     # inicio del calculo, toma el tiempo inicial
+
+inst  =   metric_dat(variables, no_variables, tensor_metrico)
+# inst  =   metric_dat("variables.dat","no_variables.dat","tensor_metrico.dat")
 
 
-# print("tensor metrico")
-# print(inst.metric(), "\n")
+print("tensor metrico")
+print(inst.metric(), "\n")
 
-# print("tensor metrico inverso")
-# print(inst.metric_inv(), "\n")
+print("tensor metrico inverso")
+print(inst.metric_inv(), "\n")
 
-# print("simbolo de chrisfofell")
-# print(inst.Christofell(0), "\n")
+print("simbolo de christofell")
+print(inst.Christofell(0), "\n")
 
 # print("conexion")
 # print(inst.Conexion(1), "\n")
@@ -304,5 +307,25 @@ class metric_dat:
 # print("Escalar de curvatura")
 # print(inst.EscalarC())
 
-# # time calculation 3-sphera 24s
+
+end_time = time.time()                      # fin del calculo, toma tiempo final 
+
+elapsed_time = end_time - start_time        # Tiempo que tarda en hacer los calculos  
+print(f"El tiempo de ejecución fue: {elapsed_time} segundos")
+
+###############################
+## time calculation 3-sphera ##
+###############################
+
+# simbolo de chrisfofell:   1.8649024963378906s     1.8785393238067627s     1.8800923824310303s     1.918670654296875s
+# conexion:                 1.9145839214324951s     1.9280104637145996s     1.9283218383789062s     1.960606336593628s 
+# tensor de riemann:        18.94029927253723s      19.243494033813477s     19.2705078125s          19.29889440536499s 
+# tensor de Riemann:        20.05891513824463s      20.125524759292603s     20.320835828781128s     20.45212745666504s
+# tensor de ricci:          20.36686658859253s      20.518545866012573s     20.779770135879517s     20.92125701904297s
+# escalar de curvatura:     20.576985836029053s     20.58171558380127s      20.622387647628784s     21.241875171661377s
+
+
+
+
+
 
