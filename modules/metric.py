@@ -75,7 +75,6 @@ class metric_dat:
 
         self.A   =  []
         self.itera  =   0
-
         for i in range(self.n):
             for j in range(self.n):
                 if i <= j:
@@ -83,8 +82,8 @@ class metric_dat:
                     self.itera   =   self.itera + 1
                 elif i > j:
                     self.A.append(0)
-
         self.A   =   sy.Array(self.A,(self.n,self.n))
+
 
         self.B   =  []
         for i in range(self.n):
@@ -94,6 +93,7 @@ class metric_dat:
                 elif i <= j:
                     self.B.append(0)
         self.B   =   sy.Array(self.B, (self.n,self.n))
+
 
         self.g   =    self.A + self.B
         self.G   =    sy.Array(self.g)
@@ -116,123 +116,208 @@ class metric_dat:
                     )/2 
             return ch
 
-        self.VChristofell  =   []
 
+        self.VChristofell_up      =   []
         for k in range(self.n):
             for j in range(self.n):
                 for i in range(self.n):
-                    self.VChristofell.append(christofell(k,j,i)) 
+                    if j <= i: 
+                        self.VChristofell_up.append(christofell(k,j,i))
+                    elif j > i:
+                        self.VChristofell_up.append(0)
+        self.VChristofell_up    =   sy.Array(self.VChristofell_up, (self.n, self.n ,self.n))
+        
 
-        self.VChristofell  =   sy.Array(self.VChristofell, (self.n, self.n ,self.n))
+        self.VChristofell_dowm    =   []
+        for k in range(self.n):
+            for j in range(self.n):
+                for i in range(self.n):
+                    if j <= i: 
+                        self.VChristofell_dowm.append(0)
+                    elif j > i:
+                        self.VChristofell_dowm.append(self.VChristofell_up[k,i,j])
+        self.VChristofell_dowm  =   sy.Array(self.VChristofell_dowm, (self.n, self.n ,self.n))
+
+
+        self.VChristofell       =   self.VChristofell_up    +   self.VChristofell_dowm
 
 
         ##############################################################
         ##-----------Simbolos_de_Christofell_Clase_2----------------##
         ##############################################################
 
-        #def conexion(i,j,k):
-        #    cx   =   0
-        #    for p in range(self.n):
-        #        D    =   self.Ginv[k,p]*self.VChristofell[p,j,i] 
-        #        cx   =   cx + D
-        #        #cx   =   simplify(factor(cx + D)) 
-        #    return cx
+        def conexion(i,j,k):
+            cx   =   0
+            for p in range(self.n):
+                D    =   self.Ginv[k,p]*self.VChristofell[p,j,i] 
+                cx   =   cx + D
+                #cx   =   simplify(factor(cx + D)) 
+            return cx
 
-        #self.VConexion  =   []
 
-        #for k in range(self.n):
-        #    for j in range(self.n):
-        #        for i in range(self.n):
-        #            self.VConexion.append(conexion(i,j,k)) 
+        self.VConexion_up       =   []
+        for k in range(self.n):
+            for j in range(self.n):
+                for i in range(self.n):
+                    if j <= i:
+                        self.VConexion_up.append(conexion(i,j,k)) 
+                    elif j > i:
+                        self.VConexion_up.append(0)
+        self.VConexion_up       =   sy.Array(self.VConexion_up, (self.n, self.n, self.n))
 
-        #self.VConexion  =   sy.Array(self.VConexion, (self.n, self.n, self.n))
+
+        self.VConexion_dowm     =   []
+        for k in range(self.n):
+            for j in range(self.n):
+                for i in range(self.n):
+                    if j <= i:
+                        self.VConexion_dowm.append(0)
+                    elif j > i:
+                        self.VConexion_dowm.append(self.VConexion_up[k,i,j]) 
+        self.VConexion_dowm     =   sy.Array(self.VConexion_dowm, (self.n, self.n, self.n))
+        
+
+        self.VConexion          =   self.VConexion_up    +   self.VConexion_dowm
 
 
         #############################################################
         ##----------Tensor_de_Riemann_4-Covariante-----------------##
         #############################################################
 
-        # def DD(p,i,j,k):
-        #     D   =   0 
-        #     for s in range(self.n):
-        #         D   =   (
-        #                 D + self.VConexion[s,k,p]*self.VChristofell[s,i,j] 
-        #                 - self.VConexion[s,j,p]*self.VChristofell[s,i,k]
-        #                 )
+        def DD(p,i,j,k):
+            D   =   0 
+            for s in range(self.n):
+                D   =   (
+                        D + self.VConexion[s,k,p]*self.VChristofell[s,i,j] 
+                        - self.VConexion[s,j,p]*self.VChristofell[s,i,k]
+                        )
+                D   =   sy.simplify(sy.factor(D))
+            return D
 
-        #         D   =   sy.simplify(sy.factor(D))
-        #     return D
 
-        # self.Vriemann     =   []
+        self.Vriemann_up     =   []
+        for p in range(self.n):
+            for i in range(self.n):
+                for j in range(self.n):
+                    for k in range(self.n):
+                        if p == i:
+                            self.Vriemann_up.append(0)
+                        elif j == k:
+                            self.Vriemann_up.append(0)
+                        elif j < k:
+                            self.SS  =   (
+                                    sy.diff(self.VChristofell[p,i,k], self.var[j]) - 
+                                    sy.diff(self.VChristofell[p,i,j], self.var[k]) + 
+                                    DD(p,i,j,k)
+                                    )
+                            self.SS  =   sy.simplify(sy.factor(self.SS))
+                            self.Vriemann_up.append(self.SS)
+                        elif j > k:
+                            self.Vriemann_up.append(0)
+        self.Vriemann_up     =   sy.Array(self.Vriemann_up, (self.n, self.n, self.n, self.n))
 
-        # for p in range(self.n):
-        #     for i in range(self.n):
-        #         for j in range(self.n):
-        #             for k in range(self.n):
-        #                 self.SS  =   (
-        #                         sy.diff(self.VChristofell[p,i,k], self.var[j]) - 
-        #                         sy.diff(self.VChristofell[p,i,j], self.var[k]) + 
-        #                         DD(p,i,j,k)
-        #                         )
 
-        #                 self.SS  =   sy.simplify(sy.factor(self.SS))
-        #                 self.Vriemann.append(self.SS)
+        self.Vriemann_dowm     =   []
+        for p in range(self.n):
+            for i in range(self.n):
+                for j in range(self.n):
+                    for k in range(self.n):
+                        if p == i:
+                            self.Vriemann_dowm.append(0)
+                        elif j == k:
+                            self.Vriemann_dowm.append(0)
+                        elif j < k:
+                            self.Vriemann_dowm.append(0)
+                        elif j > k:
+                            self.Vriemann_dowm.append((-1)*self.Vriemann_up[p,i,k,j])
+        self.Vriemann_dowm   =   sy.Array(self.Vriemann_dowm, (self.n, self.n, self.n, self.n))
 
-        # self.Vriemann     =   sy.Array(self.Vriemann, (self.n, self.n, self.n, self.n))
+
+        self.Vriemann     =   self.Vriemann_up     +   self.Vriemann_dowm 
 
 
         #############################################################
         ##-----Tensor_de_Riemann_3-Covariante_1-Contravariante-----##
         #############################################################
 
+        def TRiemann(p,i,j,k):
+            TT  =   0
+            for s in range(self.n):
+                TT  =   TT + self.Ginv[p,s]*self.Vriemann[s,i,j,k]
+                TT  =   sy.simplify(sy.factor(TT))
+            return TT
 
-        # def TRiemann(p,i,j,k):
-        #     TT  =   0
-        #     for s in range(self.n):
-        #         TT  =   TT + self.Ginv[p,s]*self.Vriemann[s,i,j,k]
-        #         TT  =   sy.simplify(sy.factor(TT))
-        #     return TT
 
-        # self.VRiemann     =   []
+        self.VRiemann_up     =   []
+        for p in range(self.n):
+            for i in range(self.n):
+                for j in range(self.n):
+                    for k in range(self.n):
+                        if j < k:
+                            self.VRiemann_up.append(TRiemann(p,i,j,k))
+                        elif j >= k: 
+                            self.VRiemann_up.append(0)
+        self.VRiemann_up     =   sy.Array(self.VRiemann_up, (self.n, self.n, self.n, self.n))
 
-        # for p in range(self.n):
-        #     for i in range(self.n):
-        #         for j in range(self.n):
-        #             for k in range(self.n):
-        #                 self.VRiemann.append(TRiemann(p,i,j,k))
 
-        # self.VRiemann     =   sy.Array(self.VRiemann, (self.n, self.n, self.n, self.n))
+        self.VRiemann_dowm     =   []
+        for p in range(self.n):
+            for i in range(self.n):
+                for j in range(self.n):
+                    for k in range(self.n):
+                        if j < k:
+                            self.VRiemann_dowm.append(0)
+                        elif j >= k:
+                            self.VRiemann_dowm.append((-1)*self.VRiemann_up[p,i,k,j])
+        self.VRiemann_dowm     =   sy.Array(self.VRiemann_dowm, (self.n, self.n, self.n, self.n))
+
+        
+        self.VRiemann     =   self.VRiemann_up      +   self.VRiemann_dowm
 
 
         #############################################################
         ##-------------------Tensor_de_Ricci-----------------------##
         #############################################################
 
-        # def ricci(i,j):
-        #     ri  =   0
-        #     for s in range(self.n):
-        #         ri  =   ri + self.VRiemann[s,i,s,j]
-        #         ri  =   sy.simplify(sy.factor(ri))
-        #     return ri
+        def ricci(i,j):
+            ri  =   0
+            for s in range(self.n):
+                ri  =   ri + self.VRiemann[s,i,s,j]
+                ri  =   sy.simplify(sy.factor(ri))
+            return ri
 
-        # self.VRicci   =   []
 
-        # for i in range(self.n):
-        #     for j in range(self.n):
-        #         self.VRicci.append(ricci(i,j))
+        self.VRicci_up   =   []
+        for i in range(self.n):
+            for j in range(self.n):
+                if j <= i:
+                    self.VRicci_up.append(ricci(i,j))
+                elif j > i: 
+                    self.VRicci_up.append(0)
+        self.VRicci_up   =   sy.Array(self.VRicci_up, (self.n, self.n))
 
-        # self.VRicci   =   sy.Array(self.VRicci, (self.n, self.n))
+        self.VRicci_dowm   =   []
+        for i in range(self.n):
+            for j in range(self.n):
+                if j <= i:
+                    self.VRicci_dowm.append(0)
+                elif j > i:
+                    self.VRicci_dowm.append(self.VRicci_up[i,j])
+        self.VRicci_dowm   =   sy.Array(self.VRicci_dowm, (self.n, self.n))
+
+        
+        self.VRicci   =   self.VRicci_up        +   self.VRicci_dowm
 
 
         #############################################################
         ##-----------------Escalar_de_Curvatura--------------------##
         #############################################################
 
-        # self.VEscalarC = 0
-        # for i in range(self.n):
-        #     for j in range(self.n):
-        #         self.VEscalarC    =   self.VEscalarC + self.Ginv[i,j]*self.VRicci[i,j]
-        #         self.VEscalarC    =   sy.simplify(sy.factor(self.VEscalarC)) 
+        self.VEscalarC = 0
+        for i in range(self.n):
+            for j in range(self.n):
+                self.VEscalarC    =   self.VEscalarC + self.Ginv[i,j]*self.VRicci[i,j]
+                self.VEscalarC    =   sy.simplify(sy.factor(self.VEscalarC)) 
 
 
     ##############################################################
@@ -251,17 +336,17 @@ class metric_dat:
     def Conexion(self,k):
         return self.VConexion[k]
 
-    # def riemann(self,j,i): 
-    #     return self.Vriemann[j,i]
+    def riemann(self,j,i): 
+        return self.Vriemann[j,i]
 
-    # def Riemann(self,j,i):
-    #     return self.VRiemann[j,i]
+    def Riemann(self,j,i):
+        return self.VRiemann[j,i]
 
-    # def Ricci(self):
-    #     return self.VRicci 
+    def Ricci(self):
+        return self.VRicci 
 
-    # def EscalarC(self):
-    #     return self.VEscalarC
+    def EscalarC(self):
+        return self.VEscalarC
 
 
 #------------------------------------------------------------#
@@ -292,40 +377,26 @@ print(inst.metric_inv(), "\n")
 print("simbolo de christofell")
 print(inst.Christofell(0), "\n")
 
-# print("conexion")
-# print(inst.Conexion(1), "\n")
+print("conexion")
+print(inst.Conexion(1), "\n")
 
-# print("tensor de riemann")
-# print(inst.riemann(0,1), "\n")
+print("tensor de riemann")
+print(inst.riemann(0,2), "\n")
 
-# print("tensor de Riemann")
-# print(inst.Riemann(0,1), "\n")
+print("tensor de Riemann")
+print(inst.Riemann(0,1), "\n")
 
-# print("tensor de Ricci")
-# print(inst.Ricci(), "\n")
+print("tensor de Ricci")
+print(inst.Ricci(), "\n")
 
-# print("Escalar de curvatura")
-# print(inst.EscalarC())
+print("Escalar de curvatura")
+print(inst.EscalarC())
 
 
 end_time = time.time()                      # fin del calculo, toma tiempo final 
 
 elapsed_time = end_time - start_time        # Tiempo que tarda en hacer los calculos  
 print(f"El tiempo de ejecución fue: {elapsed_time} segundos")
-
-###############################
-## time calculation 3-sphera ##
-###############################
-
-# simbolo de chrisfofell:   1.8649024963378906s     1.8785393238067627s     1.8800923824310303s     1.918670654296875s
-# conexion:                 1.9145839214324951s     1.9280104637145996s     1.9283218383789062s     1.960606336593628s 
-# tensor de riemann:        18.94029927253723s      19.243494033813477s     19.2705078125s          19.29889440536499s 
-# tensor de Riemann:        20.05891513824463s      20.125524759292603s     20.320835828781128s     20.45212745666504s
-# tensor de ricci:          20.36686658859253s      20.518545866012573s     20.779770135879517s     20.92125701904297s
-# escalar de curvatura:     20.576985836029053s     20.58171558380127s      20.622387647628784s     21.241875171661377s
-
-
-
 
 
 
