@@ -200,9 +200,9 @@ class metric_dat:
             for i in range(self.n):
                 for j in range(self.n):
                     for k in range(self.n):
-                        if p == i:
+                        if p >= i:
                             self.Vriemann_up.append(0)
-                        elif j == k:
+                        elif j >= k:
                             self.Vriemann_up.append(0)
                         elif j < k:
                             self.SS  =   (
@@ -212,8 +212,6 @@ class metric_dat:
                                     )
                             self.SS  =   sy.simplify(sy.factor(self.SS))
                             self.Vriemann_up.append(self.SS)
-                        elif j > k:
-                            self.Vriemann_up.append(0)
         self.Vriemann_up     =   sy.Array(self.Vriemann_up, (self.n, self.n, self.n, self.n))
 
 
@@ -222,18 +220,29 @@ class metric_dat:
             for i in range(self.n):
                 for j in range(self.n):
                     for k in range(self.n):
-                        if p == i:
+                        if p >= i:
                             self.Vriemann_dowm.append(0)
-                        elif j == k:
-                            self.Vriemann_dowm.append(0)
-                        elif j < k:
+                        elif j <= k:
                             self.Vriemann_dowm.append(0)
                         elif j > k:
                             self.Vriemann_dowm.append((-1)*self.Vriemann_up[p,i,k,j])
         self.Vriemann_dowm   =   sy.Array(self.Vriemann_dowm, (self.n, self.n, self.n, self.n))
 
 
-        self.Vriemann     =   self.Vriemann_up     +   self.Vriemann_dowm 
+        self.Vriemann_01     =   self.Vriemann_up     +   self.Vriemann_dowm 
+
+
+        self.Vriemann_02    =   []
+        for p in range(self.n):
+            for i in range(self.n):
+                if p >= i:
+                    self.Vriemann_02.append((-1)*self.Vriemann_01[i,p]) 
+                elif p < i:
+                    self.Vriemann_02.append(sy.Array([0]*(self.n*self.n), (self.n, self.n)))
+        self.Vriemann_02    =   sy.Array(self.Vriemann_02, (self.n, self.n, self.n, self.n))
+
+
+        self.Vriemann     =   self.Vriemann_01      +   self.Vriemann_02 
 
 
         #############################################################
@@ -353,50 +362,50 @@ class metric_dat:
 
 #--------------------instanciando_objeto---------------------#
 
-import time
-import os
+# import time
+# import os
 
-os.system("clear")
+# os.system("clear")
 
-variables       =   "~/.config/metric/support_files/intro_data/variables.dat"
-no_variables    =   "~/.config/metric/support_files/intro_data/no_variables.dat"
-tensor_metrico  =   "~/.config/metric/support_files/intro_data/tensor_metrico.dat"
+# variables       =   "~/.config/metric/support_files/intro_data/variables.dat"
+# no_variables    =   "~/.config/metric/support_files/intro_data/no_variables.dat"
+# tensor_metrico  =   "~/.config/metric/support_files/intro_data/tensor_metrico.dat"
 
-start_time = time.time()                     # inicio del calculo, toma el tiempo inicial
+# start_time = time.time()                     # inicio del calculo, toma el tiempo inicial
 
-inst  =   metric_dat(variables, no_variables, tensor_metrico)
-# inst  =   metric_dat("variables.dat","no_variables.dat","tensor_metrico.dat")
-
-
-print("tensor metrico")
-print(inst.metric(), "\n")
-
-print("tensor metrico inverso")
-print(inst.metric_inv(), "\n")
-
-print("simbolo de christofell")
-print(inst.Christofell(0), "\n")
-
-print("conexion")
-print(inst.Conexion(1), "\n")
-
-print("tensor de riemann")
-print(inst.riemann(0,2), "\n")
-
-print("tensor de Riemann")
-print(inst.Riemann(0,1), "\n")
-
-print("tensor de Ricci")
-print(inst.Ricci(), "\n")
-
-print("Escalar de curvatura")
-print(inst.EscalarC())
+# inst  =   metric_dat(variables, no_variables, tensor_metrico)
+# # inst  =   metric_dat("variables.dat","no_variables.dat","tensor_metrico.dat")
 
 
-end_time = time.time()                      # fin del calculo, toma tiempo final 
+# print("tensor metrico")
+# print(inst.metric(), "\n")
 
-elapsed_time = end_time - start_time        # Tiempo que tarda en hacer los calculos  
-print(f"El tiempo de ejecución fue: {elapsed_time} segundos")
+# print("tensor metrico inverso")
+# print(inst.metric_inv(), "\n")
+
+# print("simbolo de christofell")
+# print(inst.Christofell(0), "\n")
+
+# print("conexion")
+# print(inst.Conexion(1), "\n")
+
+# print("tensor de riemann")
+# print(inst.riemann(0,2), "\n")
+
+# print("tensor de Riemann")
+# print(inst.Riemann(0,1), "\n")
+
+# print("tensor de Ricci")
+# print(inst.Ricci(), "\n")
+
+# print("Escalar de curvatura")
+# print(inst.EscalarC())
+
+
+# end_time = time.time()                      # fin del calculo, toma tiempo final 
+
+# elapsed_time = end_time - start_time        # Tiempo que tarda en hacer los calculos  
+# print(f"El tiempo de ejecución fue: {elapsed_time} segundos")
 
 
 
