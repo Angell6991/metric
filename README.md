@@ -31,7 +31,7 @@ and organized in matrix form.
 - [Using the Program](#using-the-program)
 
 
-##Installation
+## Installation
 We will develop the manual installation guide for Metríc3 specifically for Arch Linux. 
 Therefore, the installation commands will be tailored for using the pacman package manager. 
 However, if you are a user of Fedora-based or Debian-based distributions, you can use the respective package 
