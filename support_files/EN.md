@@ -31,7 +31,7 @@ Before installing Metríc3, LaTeX is required:
 
 To install LaTeX on Arch Linux, it is recommended to use pacman to search for and check the 
 availability of texlive packages:
-```sh
+```zsh
 pacman -Ss texlive
 ```
 This way, you can customize the installation according to your needs, although it's recommended 
@@ -44,35 +44,35 @@ please note that it will take a considerable amount of time.
 
 
 Once LaTeX is installed, regardless of the Linux distribution type, clone the repository:
-```sh
+```zsh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
 
 ##### Arch
 Grant execute permissions to the script:
-```sh
-chmod u+x ~/.config/metric/scripts/install_Arch.sh
+```zsh
+chmod u+x ~/.config/metric/scripts/install_Arch.zsh
 ```
 Execute the script:
-```sh
-~/.config/metric/scripts/install_Arch.sh 
+```zsh
+~/.config/metric/scripts/install_Arch.zsh 
 ```
 If everything has gone well, you can now run the program from anywhere on your system using:
-```sh
+```zsh
 metric3
 ```
 
 ##### Fedora
 Grant execute permissions to the script:
-```sh
-chmod u+x ~/.config/metric/scripts/install_Fedora.sh
+```zsh
+chmod u+x ~/.config/metric/scripts/install_Fedora.zsh
 ```
 Execute the script:
-```sh
-~/.config/metric/scripts/install_Fedora.sh 
+```zsh
+~/.config/metric/scripts/install_Fedora.zsh 
 ```
 If everything has gone well, you can now run the program from anywhere on your system using:
-```sh
+```zsh
 metric3
 ```
 
@@ -84,20 +84,20 @@ As a prerequisite for installing Metríc3 on the system, you need to have the fo
 Zathura PDF viewer, Python programming language, Python package manager pip, LaTeX typesetting system.
 
 Install Zathura along with its dependencies:
-```sh
+```zsh
 sudo pacman -S zathura zathura-pdf-mupdf zathura-ps zathura-djvu zathura-cb
 ```
 
 Install LaTeX:
 It is recommended to use pacman to search for and verify the availability of texlive packages:
-```sh
+```zsh
 pacman -Ss texlive
 ```
 This way, you can customize the installation according to your needs, although it's recommended 
 to perform a full installation to avoid issues such as missing fonts or LaTeX compilers.
 
 If you want to perform a full installation of LaTeX using pacman:
-```sh
+```zsh
 sudo pacman -S texlive
 ```
 And choose to install all packages.
@@ -105,13 +105,13 @@ And choose to install all packages.
 
 
 Install Python along with its dependencies using pacman:
-```sh
+```zsh
 sudo pacman -S python python-pip python-sympy python-pandas python-pillow tk
 ```
 
 Install Python dependencies and libraries that are not available in pacman but 
 can be downloaded with pip:
-```sh
+```zsh
 pip install pylatex customtkinter pyinstaller
 ```
 >[!IMPORTANT] 
@@ -125,18 +125,18 @@ pip install pylatex customtkinter pyinstaller
 #### Clone the Repository
 Once the above programs and libraries are installed, proceed to clone the 
 repository to the following path:
-```sh
+```zsh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
 
 Now that the repository has been cloned, you can run the program without 
 the need to mount it on the system, using the Python interpreter. 
 Simply navigate to the directory where the repository was cloned:
-```sh
+```zsh
 cd ~/.config/metric
 ```
 To start the program with the Python interpreter, execute the following command in the terminal:
-```sh
+```zsh
 python metric3.py 
 ```
 This way, the program would be usable. However, if you wish to run it from any 
@@ -145,11 +145,11 @@ location in the system, I invite you to continue with the installation guide.
 #### Packaging Metríc3 with PyInstaller
 
 Once the repository has been cloned, navigate to the saved directory:
-```sh
+```zsh
 cd ~/.config/metric
 ```
 Create the binary using PyInstaller:
-```sh
+```zsh
 pyinstaller --hidden-import=PIL._tkinter_finder --onefile metric3.py
 ```
 Keep in mind that this process may take some time.
@@ -159,7 +159,7 @@ Keep in mind that this process may take some time.
 Once the binary creation process is complete, it will be located in the newly 
 created "dist" directory within the "metric" directory. To mount the binary in the system, 
 we will do it using a symbolic link: 
-```sh
+```zsh
 sudo ln -s ~/.config/metric/dist/metric3 /usr/local/bin/metric3
 ```
 <!-- sudo ln -s /home/my_user/.config/metric/dist/metric3 /usr/local/bin/metric3 -->
@@ -167,7 +167,7 @@ sudo ln -s ~/.config/metric/dist/metric3 /usr/local/bin/metric3
 
 
 This way, you can now execute the program from anywhere on your system using:
-```sh
+```zsh
 metric3
 ```
 
@@ -177,12 +177,12 @@ If for any reason you wish to uninstall the Metric3 program,
 it's as simple as following these two steps:
 
 Delete the directory where the repository was cloned:
-```sh
+```zsh
 rm -rf ~/.config/metric
 ```
 
 Delete symbolic link:
-```sh
+```zsh
 sudo rm /usr/local/bin/metric3
 ```
 
@@ -209,7 +209,7 @@ $$
 
 Once this metric is identified, we can begin using Metríc3 by starting it with:
 
-```sh
+```zsh
 metric3
 ```
 
@@ -282,7 +282,7 @@ proceed to start the calculation. Once the calculation is finished,
 you will have the option to view the results in a PDF document.
 
 This PDF document is always saved with the name "Metric_doc.pdf" in the directory:
-```sh
+```zsh
 ~/
 ```
 >[!NOTE] 
@@ -291,19 +291,5 @@ This PDF document is always saved with the name "Metric_doc.pdf" in the director
 >previously calculated metric, simply rename "Metric_doc.pdf" to something else. 
 >This way, when you run Metríc3 again, a new "Metric_doc.pdf" will be generated 
 >that will not overwrite the previously obtained one.
-
-</details>
-
-
-## Descripción
-
-Metríc3 es un proyecto desarrollado en Python, compatible con cualquier sistema operativo Linux. 
-Se encarga de realizar los cálculos de los símbolos de Christoffel, el tensor de Riemann, 
-el tensor de Ricci y el escalar de curvatura.
-
-Las características distintivas de este proyecto son que, para realizar los cálculos mencionados 
-anteriormente, hace uso de una interfaz de usuario que permite introducir de manera explícita el 
-tensor métrico. Para el despliegue de resultados, utiliza LaTeX para construir un documento PDF 
-que contiene los resultados de los cálculos en lenguaje matemático y ordenados de forma matricial.
 
 

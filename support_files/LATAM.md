@@ -1,4 +1,4 @@
-## Tabla de Contenidos
+# Tabla de Contenidos
 
 - [Instalación](#instalación)
     - [Instalación automatizada](#instalación-automatizada)
@@ -30,7 +30,7 @@ Antes de instalar Metríc3, se requiere tener LaTeX:
 
 Para instalar LaTeX en Arch, se recomienda hacer uso de pacman para buscar y ver la disponibilidad 
 de los paquetes de texlive:
-```sh
+```zsh
 pacman -Ss texlive
 ```
 De esta forma, la instalación la podrás realizar de forma personalizada según tus necesidades, 
@@ -44,37 +44,37 @@ hay que tener en cuenta que esta instalación llevará un tiempo considerable.
 
 
 Una vez instalado LaTeX, sin importar el tipo de distribución de Linux, clona el repositorio:
-```sh
+```zsh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
 
 ##### Arch
 Dar permisos de ejecución al script:
-```sh
-chmod u+x ~/.config/metric/scripts/install_Arch.sh
+```zsh
+chmod u+x ~/.config/metric/scripts/install_Arch.zsh
 ```
 Ejecutar el script:
-```sh
-~/.config/metric/scripts/install_Arch.sh 
+```zsh
+~/.config/metric/scripts/install_Arch.zsh 
 ```
 Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
 parte del equipo a través de:
-```sh
+```zsh
 metric3
 ```
 
 ##### Fedora
 Dar permisos de ejecución al script:
-```sh
-chmod u+x ~/.config/metric/scripts/install_Fedora.sh
+```zsh
+chmod u+x ~/.config/metric/scripts/install_Fedora.zsh
 ```
 Ejecutar el script:
-```sh
-~/.config/metric/scripts/install_Fedora.sh 
+```zsh
+~/.config/metric/scripts/install_Fedora.zsh 
 ```
 Si todo ha salido bien, ya podemos ejecutar el programa desde cualquier 
 parte del equipo a través de:
-```sh
+```zsh
 metric3
 ```
 
@@ -86,7 +86,7 @@ visor de PDF Zathura, el lenguaje de programación Python, el gestor de paquetes
 pip y el sistema de composición de texto LaTeX.
 
 Instalar Zathura junto con sus dependencias:
-```sh
+```zsh
 sudo pacman -S zathura zathura-pdf-mupdf zathura-ps zathura-djvu zathura-cb
 ```
 
@@ -94,7 +94,7 @@ sudo pacman -S zathura zathura-pdf-mupdf zathura-ps zathura-djvu zathura-cb
 Instalar LaTeX:
 Se recomienda hacer uso de pacman para buscar y verificar la disponibilidad de los paquetes 
 de texlive:
-```sh
+```zsh
 pacman -Ss texlive
 ```
 De esta forma, la instalación la podrás realizar de forma personalizada según tus necesidades, 
@@ -102,19 +102,19 @@ aunque se recomienda realizar una instalación tipo full para evitar problemas c
 fuentes o compiladores de LaTeX.
 
 En caso de querer hacer la instalación completa de LaTeX con pacman:
-```sh
+```zsh
 sudo pacman -S texlive
 ```
 Y elegir la instalación de todos los paquetes.
 
 
 Instalar Python junto con sus dependencias utilizando pacman:
-```sh
+```zsh
 sudo pacman -S python python-pip python-sympy python-pandas python-pillow tk
 ```
 Instalar las dependencias y bibliotecas de Python que no están disponibles en pacman y que 
 se pueden descargar con pip:
-```sh
+```zsh
 pip install pylatex customtkinter pyinstaller
 ```
 >[!IMPORTANT] 
@@ -128,18 +128,18 @@ pip install pylatex customtkinter pyinstaller
 #### Clonar el repositorio
 Una vez instalados los programas y librerías anteriores, se procede a clonar 
 el repositorio en la ruta:
-```sh
+```zsh
 git clone https://github.com/Angell6991/metric.git ~/.config/metric
 ```
 
 Ya que se ha clonado el repositorio, se puede ejecutar el programa sin necesidad 
 de montarlo en el sistema, a través del intérprete de Python. Solo hay que dirigirse 
 al directorio en el cual se clonó el repositorio:
-```sh
+```zsh
 cd ~/.config/metric
 ```
 Y para iniciar el programa con el intérprete de Python, se ejecuta en la terminal:
-```sh
+```zsh
 python metric3.py 
 ```
 De esta forma, el programa ya sería usable. Sin embargo, si se desea ejecutarlo 
@@ -148,11 +148,11 @@ desde cualquier parte del sistema, te invito a seguir con la guía de instalaci�
 
 #### Montando Metric3 con PyInstaller
 Una vez clonado el repositorio, nos dirigimos al directorio de guardado:
-```sh
+```zsh
 cd ~/.config/metric
 ```
 Creamos el binario haciendo uso de PyInstaller:
-```sh
+```zsh
 pyinstaller --hidden-import=PIL._tkinter_finder --onefile metric3.py
 ```
 Ten presente que este proceso puede llevar un tiempo.
@@ -160,7 +160,7 @@ Ten presente que este proceso puede llevar un tiempo.
 Una vez terminada la creación del binario, este se encontrará en el 
 directorio "dist" recién creado dentro del directorio "metric". 
 Para montar el binario en el sistema, lo realizaremos mediante un enlace simbólico: 
-```sh
+```zsh
 sudo ln -s ~/.config/metric/dist/metric3 /usr/local/bin/metric3
 ```
 <!-- sudo ln -s /home/my_user/.config/metric/dist/metric3 /usr/local/bin/metric3 -->
@@ -168,7 +168,7 @@ sudo ln -s ~/.config/metric/dist/metric3 /usr/local/bin/metric3
 
 De esta manera, ya podemos ejecutar el programa desde cualquier parte del equipo 
 a través de:
-```sh
+```zsh
 metric3
 ```
 
@@ -177,12 +177,12 @@ Si por alguna razón desea desinstalar el programa Metric3, es tan sencillo como
 seguir estos dos pasos:
 
 Eliminar el directorio donde se clonó el repositorio:
-```sh
+```zsh
 rm -rf ~/.config/metric
 ```
 
 Eliminar el enlace simbólico:
-```sh
+```zsh
 sudo rm /usr/local/bin/metric3
 ```
 
@@ -208,7 +208,7 @@ $$
 
 Una vez identificado esto de la métrica, podemos empezar a usar Metríc3 iniciándolo con:
 
-```sh
+```zsh
 metric3
 ```
 
@@ -284,7 +284,7 @@ a iniciar el cálculo. Una vez finalizado el cálculo, se podrá disponer de la 
 resultados en un documento PDF.
 
 Este documento PDF siempre se guarda con el nombre "Metric_doc.pdf" en el directorio:
-```sh
+```zsh
 ~/
 ```
 >[!NOTE] 
