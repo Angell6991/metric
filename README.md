@@ -46,7 +46,7 @@ you will need to proceed with manual installation.
 
 #### Installation Steps using the Script
 
-#####Prerequisites
+##### Prerequisites
 
 Before installing Metríc3, LaTeX is required:
 
