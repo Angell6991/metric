@@ -216,7 +216,7 @@ Lo primero que mostrará el programa al iniciar es una ventana que pedirá ingre
 Estas variables son las coordenadas que representan los grados de libertad de la métrica:
 
 <p align="center">
-  <img src="support_files/images/documentation/var.png"  width="800">
+  <img src="images/documentation/var.png"  width="800">
 </p>
 
 
@@ -227,7 +227,7 @@ Una vez introducidas las variables, damos clic en el botón "Next", con lo cual 
 siguiente ventana:
 
 <p align="center">
-  <img src="support_files/images/documentation/no_var.png"  width="800">
+  <img src="images/documentation/no_var.png"  width="800">
 </p>
 
 Esta ventana pide introducir las no variables o, en otras palabras, los parámetros que son constantes 
@@ -272,7 +272,7 @@ sucesivamente hasta terminar de introducir toda la parte triangular superior, co
 en la siguiente imagen:
 
 <p align="center">
-  <img src="support_files/images/documentation/met.png"  width="800">
+  <img src="images/documentation/met.png"  width="800">
 </p>
 
 >[!NOTE]

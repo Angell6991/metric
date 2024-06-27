@@ -217,7 +217,7 @@ The first thing the program will show upon starting is a window that prompts for
 These variables are the coordinates representing the degrees of freedom of the metric:
 
 <p align="center">
-  <img src="support_files/images/documentation/var.png"  width="800">
+  <img src="images/documentation/var.png"  width="800">
 </p>
 
 The way to enter the variables is shown in the previous image. 
@@ -227,7 +227,7 @@ it only recognizes the syntax used by Sympy in Python.
 Once the variables are entered, click the "Next" button, which will display the following window:
 
 <p align="center">
-  <img src="support_files/images/documentation/no_var.png"  width="800">
+  <img src="images/documentation/no_var.png"  width="800">
 </p>
 
 This window prompts for entering the non-variables or, in other words, 
@@ -271,7 +271,7 @@ You follow this process successively until you have entered the entire upper tri
 as shown in the following image:
 
 <p align="center">
-  <img src="support_files/images/documentation/met.png"  width="800">
+  <img src="images/documentation/met.png"  width="800">
 </p>
 
 >[!NOTE]
